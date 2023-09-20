@@ -15,11 +15,11 @@ public class Bullet : MonoBehaviour
         rb = bullet.GetComponent<Rigidbody>();
     }
 
-    void Update()
+    void FixedUpdate()
     {
         if (Input.GetKeyDown(KeyCode.F))
         {
-            rb.AddForce(transform.up * speed, ForceMode.Impulse);
+            rb.AddForce(transform.forward * speed, ForceMode.Acceleration);
         }
     }
     /*
