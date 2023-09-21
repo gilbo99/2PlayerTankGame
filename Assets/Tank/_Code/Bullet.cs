@@ -5,23 +5,43 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
-    public GameObject bullet;
-
-    public float speed;
+    
+    
     private Rigidbody rb;
-    // Update is called once per frame
+
+    public int damage;
+    public float speed;
+    public float lifespan;
+    public float cooldown;
+    
     public void Awake()
     {
-        rb = bullet.GetComponent<Rigidbody>();
+        rb = this.GetComponent<Rigidbody>();
+        rb.AddForce(transform.forward * speed, ForceMode.Impulse);
+        Destroy(this.gameObject, lifespan);
     }
 
-    void FixedUpdate()
+    public void Update()
     {
-        if (Input.GetKeyDown(KeyCode.F))
+        
+    }
+
+
+    private void OnCollisionEnter(Collision other)
+    {
+        if (other.gameObject.GetComponent<TankStats>())
         {
-            rb.AddForce(transform.forward * speed, ForceMode.Acceleration);
+            Destroy(this.gameObject);
+            other.gameObject.GetComponent<TankStats>().TakeDamaged(damage);
+            
         }
     }
+    
+    
+    
+    
+    
+    
     /*
     private void OnCollisionEnter(Collision collision) 
     {

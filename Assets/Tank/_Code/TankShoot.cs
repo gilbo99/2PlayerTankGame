@@ -3,42 +3,27 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class TankShoot : MonoBehaviour
 {
-    public int player = 0;
     public KeyCode shoot;
+    public GameObject bullet;
+    public GameObject spawnbullet;
 
-
-    public void Start()
-    {
-        SetPlayer();
-    }
+    public float cooldown;
 
     // Update is called once per frame
     void Update()
     {
+        cooldown -= Time.deltaTime;
 
-
-        if (Input.GetKeyDown(shoot))
+        if (Input.GetKeyDown(shoot)&& cooldown <= 0)
         {
             
-        }
-    }
-
-
-
-
-    public void SetPlayer()
-    {
-        switch (player)
-        {
-            case 0:
-                shoot = KeyCode.LeftAlt;
-                break;
-            case 1:
-                shoot = KeyCode.RightArrow;
-                break;
+            Vector3 Spawn = new Vector3(spawnbullet.transform.position.x, spawnbullet.transform.position.y, spawnbullet.transform.position.z);   
+            Instantiate(bullet, Spawn, transform.rotation);  
+            cooldown = bullet.GetComponent<Bullet>().cooldown;
         }
     }
     
