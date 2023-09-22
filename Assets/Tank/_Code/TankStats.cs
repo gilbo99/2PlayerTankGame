@@ -26,7 +26,7 @@ public class TankStats : MonoBehaviour
         uIManager.SetPlayerHP(health, id);
         if (health <= 0)
         {
-            
+            gm.active.RemoveAt(id);
             Destroy(this.gameObject);
         }
     }
@@ -36,8 +36,8 @@ public class TankStats : MonoBehaviour
     {
         if (gm.active.Count == 1)
         {
-            
             uIManager.Toggle(true);
+            Cursor.visible = true;
         }
     }
 }

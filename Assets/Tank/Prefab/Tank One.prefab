@@ -247,7 +247,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 4
+  m_Constraints: 116
   m_CollisionDetection: 1
 --- !u!65 &5880100563965471430
 BoxCollider:
@@ -282,8 +282,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b4f724a38b723a94cbf462c233a88d2c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  abilities: {fileID: 3476610600242423708, guid: 25ad4cffe96244148b5b31d4d7289b51, type: 3}
-  spawn: {fileID: 3557870033119639547}
+  abilities: {fileID: 0}
   specialShoot: 308
 --- !u!114 &7439367278938363517
 MonoBehaviour:
@@ -313,7 +312,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bca7acea9317b6348b820803f62d5bff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 5
+  health: 10
   id: 0
 --- !u!1 &2820523172229340075
 GameObject:

@@ -85,6 +85,8 @@ public class Rocket : MonoBehaviour
         }
 
         timer -= Time.deltaTime;
+
+        
     }
 
     private void OnCollisionEnter(Collision other)
@@ -94,7 +96,6 @@ public class Rocket : MonoBehaviour
             Destroy(this.gameObject);
             if (other.gameObject.GetComponent<TankStats>())
             {
-                gm.active.RemoveAt(targetid);
                 target = null;
                 Destroy(this.gameObject);
                 other.gameObject.GetComponent<TankStats>().TakeDamaged(damage);

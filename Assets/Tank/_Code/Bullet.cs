@@ -6,6 +6,8 @@ using UnityEngine;
 public class Bullet : MonoBehaviour
 {
     private Rigidbody _rb;
+    
+    private GameManager gm;
 
     //Bullet Stats
     public int damage;
@@ -18,6 +20,7 @@ public class Bullet : MonoBehaviour
         _rb = this.GetComponent<Rigidbody>();
         _rb.AddForce(transform.forward * speed, ForceMode.Impulse);
         Destroy(this.gameObject, lifespan);
+        gm = FindObjectOfType<GameManager>();
     }
 
     

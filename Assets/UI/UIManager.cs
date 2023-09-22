@@ -20,7 +20,11 @@ public class UIManager : MonoBehaviour
 
    public void Toggle(bool active)
    {
-       reset.gameObject.SetActive(active);
+       if (reset.gameObject != null)
+       { 
+           reset.gameObject.SetActive(active);
+       }
+      
    }
 
   

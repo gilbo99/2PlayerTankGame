@@ -31,31 +31,33 @@ public class GameManager : MonoBehaviour
     // just is a spawn list of 4 spawn but will update too random locaions 
     public void SetUpGame()
     {
-
+        Cursor.visible = false;
         for (int i = 0; i < active.Count; i++)
         {
             Destroy(active[i]);
-            active.RemoveAt(i);
-            
         }
+        
+        //tankLocation.Clear();
+        active.Clear();
+        name.Clear();
+        
         
         
         
         
         for(int i = 0; i < playing; i++)
         {
-            uIManager.Toggle(false);
+            
             var clone = Instantiate(tank[i],spawnLocation[i].transform.position, transform.rotation);
             clone.gameObject.GetComponent<TankStats>().id = i;
-            tankLocation.Add(clone.transform);
+            //tankLocation.Add(clone.transform);
             active.Add(clone);
             var num = i + 1;
             name.Add("Player: " + num.ToString());
             uIManager.SetPlayerHP(clone.gameObject.GetComponent<TankStats>().health , i);
-           
             
           
         }
-          
+        uIManager.Toggle(false);   
     }
 }
