@@ -14,7 +14,9 @@ public class Bullet : MonoBehaviour
     public float speed;
     public float lifespan;
     public float cooldown;
-    
+
+
+    public Vector3 lastVelocity;
     public void Awake()
     {
         _rb = this.GetComponent<Rigidbody>();
@@ -23,14 +25,31 @@ public class Bullet : MonoBehaviour
         gm = FindObjectOfType<GameManager>();
     }
 
-    
+    public void Update()
+    {
+        lastVelocity = _rb.velocity;
+    }
 
 
     private void OnCollisionEnter(Collision other)
     {
+        /*
+        Vector3 inNormal = other.contacts[0].normal;
+        Vector3  direction = Vector3.Reflect(_rb.velocity, inNormal);
+        Debug.Log(direction);
+        Quaternion face = new Quaternion(direction.x, direction.y, direction.z, 0);
+        this.transform.rotation = face;
+        _rb.AddForce(transform.forward * speed, ForceMode.Impulse);
+
+        */
        
         if (other.gameObject.GetComponent<TankStats>())
         {
+
+            var speed2 = lastVelocity.magnitude;
+
+            var dir = Vector3.Reflect(lastVelocity.normalized, other.contacts[0].normal);
+            _rb.velocity = dir * Mathf.Max(speed2, 0f);
             
             Destroy(this.gameObject);
             other.gameObject.GetComponent<TankStats>().TakeDamaged(damage);
