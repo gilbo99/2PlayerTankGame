@@ -7,6 +7,12 @@ public class GameManager : MonoBehaviour
 {
     public List<GameObject> spawnLocation;
 
+    public List<GameObject> itemSpawn;
+
+    public List<GameObject> activeItem;
+    
+    public GameObject itembox;
+
     public List<GameObject> tank;
 
     public List<GameObject> active; 
@@ -32,17 +38,18 @@ public class GameManager : MonoBehaviour
     public void SetUpGame()
     {
         Cursor.visible = false;
-        for (int i = 0; i < active.Count; i++)
-        {
-            Destroy(active[i]);
-        }
+        ClearList();
         
         //tankLocation.Clear();
-        active.Clear();
-        name.Clear();
         
-        
-        
+
+
+        for (int i = 0; i < itemSpawn.Count; i++)
+        {
+            var clone = Instantiate(itembox, itemSpawn[i].transform.position, new Quaternion());
+            activeItem.Add(clone);
+            
+        }
         
         
         for(int i = 0; i < playing; i++)
@@ -59,5 +66,24 @@ public class GameManager : MonoBehaviour
           
         }
         uIManager.Toggle(false);   
+    }
+
+
+    public void ClearList()
+    {
+        
+        for (int i = 0; i < active.Count; i++)
+        {
+            Destroy(active[i]);
+        }
+        for (int i = 0; i < activeItem.Count; i++)
+        {
+            Destroy(activeItem[i]);
+        }
+
+
+        activeItem.Clear();
+        active.Clear();
+        name.Clear();
     }
 }

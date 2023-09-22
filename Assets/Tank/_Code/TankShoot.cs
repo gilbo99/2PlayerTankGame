@@ -17,14 +17,20 @@ public class TankShoot : MonoBehaviour
     void Update()
     {
         cooldown -= Time.deltaTime;
-
-        if (Input.GetKeyDown(shoot)&& cooldown <= 0)
+        if (Input.GetKeyDown(shoot) && cooldown <= 0)
         {
-            
-            Vector3 Spawn = new Vector3(spawnbullet.transform.position.x, spawnbullet.transform.position.y, spawnbullet.transform.position.z);   
-            Instantiate(bullet, Spawn, transform.rotation);  
-            cooldown = bullet.GetComponent<Bullet>().cooldown;
+            Shoot();
         }
+
+    }
+
+
+
+    private void Shoot()
+    {
+            Vector3 spawn = new Vector3(spawnbullet.transform.position.x, spawnbullet.transform.position.y, spawnbullet.transform.position.z);   
+            Instantiate(bullet, spawn, transform.rotation);
+            cooldown = bullet.GetComponent<Bullet>().cooldown;
     }
     
 }
