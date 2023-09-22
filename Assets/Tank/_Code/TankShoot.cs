@@ -7,13 +7,14 @@ using UnityEngine.Serialization;
 
 public class TankShoot : MonoBehaviour
 {
+    //button press
     public KeyCode shoot;
+    
     public GameObject bullet;
     public GameObject spawnbullet;
 
     public float cooldown;
-
-    // Update is called once per frame
+    
     void Update()
     {
         cooldown -= Time.deltaTime;

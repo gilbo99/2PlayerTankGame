@@ -178,6 +178,7 @@ GameObject:
   - component: {fileID: 987412153662357859}
   - component: {fileID: 4984882307795721535}
   - component: {fileID: 5880100563965471430}
+  - component: {fileID: -3711758973136238521}
   - component: {fileID: 7439367278938363517}
   - component: {fileID: 2405777053565154320}
   m_Layer: 0
@@ -216,7 +217,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 97480c50a4109db43b2270a6fabb36d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tank: {fileID: 2777789870822032284}
   speed: 2
   rotateSpeed: 10
   forward: 119
@@ -270,6 +270,21 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.87, y: 0.77, z: 1.66}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &-3711758973136238521
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2777789870822032284}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b4f724a38b723a94cbf462c233a88d2c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  abilities: {fileID: 3476610600242423708, guid: 25ad4cffe96244148b5b31d4d7289b51, type: 3}
+  spawn: {fileID: 3557870033119639547}
+  specialShoot: 308
 --- !u!114 &7439367278938363517
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -285,6 +300,7 @@ MonoBehaviour:
   shoot: 306
   bullet: {fileID: 6526254910343574331, guid: 01e92961b28502147963c8eaa5e55d74, type: 3}
   spawnbullet: {fileID: 6691232700006703995}
+  cooldown: 0
 --- !u!114 &2405777053565154320
 MonoBehaviour:
   m_ObjectHideFlags: 0

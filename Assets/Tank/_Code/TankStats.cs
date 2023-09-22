@@ -8,13 +8,16 @@ public class TankStats : MonoBehaviour
     
     private UIManager uIManager;
 
+    private GameManager gm;
+    
+
     public int health;
     public int id;
 
     public void Awake()
     {
+        gm = FindObjectOfType<GameManager>();
         uIManager = FindObjectOfType<UIManager>();
-        uIManager.SetPlayerHP(health, id);
     }
 
     public void TakeDamaged(int damage)
@@ -23,7 +26,18 @@ public class TankStats : MonoBehaviour
         uIManager.SetPlayerHP(health, id);
         if (health <= 0)
         {
+            
             Destroy(this.gameObject);
+        }
+    }
+
+
+    private void OnDestroy()
+    {
+        if (gm.active.Count == 1)
+        {
+            
+            uIManager.Toggle(true);
         }
     }
 }

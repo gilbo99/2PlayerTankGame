@@ -1,71 +1,105 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 
 public class Rocket : MonoBehaviour
 {
-    public GameObject rocket;
+    public GameObject model;
     private Rigidbody rb;
     private GameManager gm;
+
+    //once the player dies it will remove from list by this id
+    private int targetid;
     
+    //Rocket stats
     public int damage;
     public float speed;
     public float lifespan;
-    public float cooldown;
     public float dis;
+    public float timer;
     
     private float previous = 0;
     
-    public GameObject target;
+    
+    public Transform target;
+    
     public void Awake()
     {
         gm = FindObjectOfType<GameManager>();
         rb = this.GetComponent<Rigidbody>();
-        rb.AddForce(transform.up * speed, ForceMode.Impulse);
+        rb.velocity = transform.up * 25;
         Destroy(this.gameObject, lifespan);
-        GetEnemey();
+        
     }
+
     
-
-    public void GetEnemey()
+    // GetEnemey() will get the furthest tank and set target so FaceTarget() will have somewhere to go
+    private void GetEnemey()
     {
-        for (int i = 0; i < gm.playing; i++)
+        for (int i = 0; i < gm.active.Count; i++)
         {
-
-            dis = Vector3.Distance(this.transform.position, gm.tank[i].transform.position);
+            
+            
+            dis = Vector3.Distance(this.transform.position, gm.active[i].transform.position);
             if (dis >= previous)
             {
-
-                target = gm.tank[i];
                 previous = dis;
+                target = gm.active[i].transform;
+                targetid = i;
+                
             }
         }
-        Debug.Log(target.transform.position);
-       
+    }
+
+    // FaceTarget() will rotate and push the rocket towards the target
+    private void FaceTarget()
+    {
+        if (target != null)
+        {
+            Vector3 targetDirection = target.transform.position - transform.position;
+
+            float singleStep = speed * Time.deltaTime;
+
+            Vector3 newDirection = Vector3.RotateTowards(transform.forward, targetDirection, singleStep, 0.0f);
+
+            Debug.DrawRay(transform.position, newDirection, Color.red);
+
+            transform.rotation = Quaternion.LookRotation(newDirection);
+
+            rb.velocity = transform.forward * speed;
+            Vector3 test = Vector3.RotateTowards(transform.up, targetDirection, singleStep, 0.0f);
+            model.transform.rotation = Quaternion.LookRotation(test);
+        }
     }
 
 
     public void Update()
     {
-        /*
-        var lookPos = target.transform.forward - transform.position;
-        var rotation = Quaternion.LookRotation(lookPos);
-        transform.rotation = rotation;
-        */
+        if (timer <=  0)
+        {
+            GetEnemey();
+            FaceTarget();
+        }
 
-        transform.position = Vector3.MoveTowards(this.transform.position, target.transform.position, 5f);
-    
+        timer -= Time.deltaTime;
     }
 
     private void OnCollisionEnter(Collision other)
     {
-        if (other.gameObject.GetComponent<TankStats>())
+        if (timer <= 0)
         {
             Destroy(this.gameObject);
-            other.gameObject.GetComponent<TankStats>().TakeDamaged(damage);
-            
+            if (other.gameObject.GetComponent<TankStats>())
+            {
+                gm.active.RemoveAt(targetid);
+                target = null;
+                Destroy(this.gameObject);
+                other.gameObject.GetComponent<TankStats>().TakeDamaged(damage);
+                
+            }
         }
     }
     

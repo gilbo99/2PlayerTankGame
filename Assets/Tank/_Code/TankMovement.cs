@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class TankMovement : MonoBehaviour
 {
-    public GameObject tank;
+    
     public float speed;
     private Rigidbody rb;
     public int rotateSpeed;
