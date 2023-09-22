@@ -121,8 +121,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 1
   speed: 40
-  lifespan: 10
-  cooldown: 1
+  lifespan: 5
+  cooldown: 0.5
+  lastVelocity: {x: 0, y: 0, z: 0}
 --- !u!54 &2798545642169325408
 Rigidbody:
   m_ObjectHideFlags: 0
