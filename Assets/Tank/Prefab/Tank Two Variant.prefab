@@ -17,6 +17,10 @@ PrefabInstance:
       value: 276
       objectReference: {fileID: 0}
     - target: {fileID: 987412153662357859, guid: 1a09827fe090ebf4c8aa6f02325d70fc, type: 3}
+      propertyPath: boost
+      value: 274
+      objectReference: {fileID: 0}
+    - target: {fileID: 987412153662357859, guid: 1a09827fe090ebf4c8aa6f02325d70fc, type: 3}
       propertyPath: right
       value: 275
       objectReference: {fileID: 0}

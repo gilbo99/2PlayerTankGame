@@ -45,7 +45,7 @@ public class Crosshair : MonoBehaviour
                 test.transform.position = hit.point;
 
             }
-            
+           
 
         }
         Debug.DrawRay(aim.transform.position, transform.TransformDirection(Vector3.forward) * 1000, Color.red);

@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1194490739010877113}
   - component: {fileID: 7214390244365862659}
   - component: {fileID: 2851113800691074000}
-  m_Layer: 3
+  m_Layer: 6
   m_Name: Tank Player One
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -94,7 +94,7 @@ GameObject:
   - component: {fileID: 9053594102552995015}
   - component: {fileID: 5860826714226344229}
   - component: {fileID: 7815397001865709439}
-  m_Layer: 3
+  m_Layer: 6
   m_Name: Wheels
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -182,7 +182,7 @@ GameObject:
   - component: {fileID: 7439367278938363517}
   - component: {fileID: 2405777053565154320}
   - component: {fileID: 5926833675752689561}
-  m_Layer: 3
+  m_Layer: 6
   m_Name: Tank One
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -220,10 +220,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 8
-  rotateSpeed: 45
+  boostSpeed: 10
+  timer: 1.5
+  rotateSpeed: 60
   forward: 119
   left: 97
   right: 100
+  boost: 115
 --- !u!54 &4984882307795721535
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -333,7 +336,7 @@ MonoBehaviour:
   aim: {fileID: 4900761449160881065}
   mask:
     serializedVersion: 2
-    m_Bits: 8
+    m_Bits: 72
   crossHair: {fileID: 3571818569171769139, guid: 6858dcc06facf0741a094f3197a0b593, type: 3}
   test: {fileID: 0}
 --- !u!1 &2820523172229340075
@@ -345,7 +348,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6255598336698319821}
-  m_Layer: 3
+  m_Layer: 6
   m_Name: view
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -383,7 +386,7 @@ GameObject:
   - component: {fileID: 7667047313921233514}
   - component: {fileID: 6501163372646203825}
   - component: {fileID: 5870155594016097071}
-  m_Layer: 3
+  m_Layer: 6
   m_Name: Gun
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -464,7 +467,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7628274517202279161}
-  m_Layer: 3
+  m_Layer: 6
   m_Name: SpawnBullet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -497,7 +500,7 @@ GameObject:
   - component: {fileID: 4562857266153647032}
   - component: {fileID: 2237599234418509364}
   - component: {fileID: 6268563757006647498}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Camera
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -589,7 +592,7 @@ GameObject:
   - component: {fileID: 1791943283469850951}
   - component: {fileID: 4234780198139514272}
   - component: {fileID: 2978337378279956060}
-  m_Layer: 3
+  m_Layer: 6
   m_Name: Wheels
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -672,7 +675,7 @@ GameObject:
   - component: {fileID: 7997825504320444420}
   - component: {fileID: 2029071711619410635}
   - component: {fileID: 2557419960541114356}
-  m_Layer: 3
+  m_Layer: 6
   m_Name: Turrent
   m_TagString: Untagged
   m_Icon: {fileID: 0}
