@@ -28,7 +28,7 @@ public class AbilitiesBox : MonoBehaviour
 
         abilities = (Abilities)Random.Range(0,Enum.GetNames(typeof(Abilities)).Length);
 
-        abilities = (Abilities)1;
+        //abilities = (Abilities)1;
         
         
         switch (abilities)

@@ -49,7 +49,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   item:
   - {fileID: 3476610600242423708, guid: 25ad4cffe96244148b5b31d4d7289b51, type: 3}
-  - {fileID: 7980378780638278738, guid: 4cbf9b4d5eeb99d46a17a057112fcdf0, type: 3}
+  - {fileID: 3476610600242423708, guid: 25ad4cffe96244148b5b31d4d7289b51, type: 3}
   - {fileID: 4860853958800372574, guid: 5974b2c33f721e441ad0bf187fd69cb5, type: 3}
 --- !u!54 &2033422708391938931
 Rigidbody:

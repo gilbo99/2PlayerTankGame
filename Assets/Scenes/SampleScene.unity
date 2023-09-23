@@ -546,7 +546,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 251443689}
-  - component: {fileID: 251443690}
   m_Layer: 0
   m_Name: PlayerHP
   m_TagString: Untagged
@@ -569,24 +568,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1777166562}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &251443690
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 251443688}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1bcde630985edd945aa6520a2aa8c14d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  players: []
-  score: []
-  currentScore: 
-  shield: []
-  boost: []
-  reset: {fileID: 0}
 --- !u!4 &278090158 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3720144960795881860, guid: 7b73bf749a72b214a8fb6ceb0bdceb70, type: 3}
@@ -1340,8 +1321,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+    rgba: 4279966491
+  m_fontColor: {r: 0.105882354, g: 0.105882354, b: 0.105882354, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -2504,8 +2485,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+    rgba: 4279966491
+  m_fontColor: {r: 0.105882354, g: 0.105882354, b: 0.105882354, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
