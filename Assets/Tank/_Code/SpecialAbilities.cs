@@ -63,9 +63,12 @@ public class SpecialAbilities : MonoBehaviour
             rocket.SetID(playerid);
         }else if (clone.TryGetComponent<Shield>(out Shield shield))
         {
+            Vector3 Spawn = new Vector3(this.transform.position.x, this.transform.position.y + 0.37f, this.transform.position.z);
             shield.SetID(playerid);
+            shield.transform.position = Spawn;
             shield.transform.parent = transform;
         }
+        
         
     }
 
