@@ -11,8 +11,10 @@ public class Rocket : MonoBehaviour
     private Rigidbody rb;
     private GameManager gm;
 
-    //once the player dies it will remove from list by this id
-    private int targetid;
+    public string name;
+
+    
+    public int playerID;
     
     //Rocket stats
     public int damage;
@@ -24,10 +26,12 @@ public class Rocket : MonoBehaviour
     private float previous = 0;
     
     
+    
     public Transform target;
     
     public void Awake()
     {
+        
         gm = FindObjectOfType<GameManager>();
         rb = this.GetComponent<Rigidbody>();
         rb.velocity = transform.up * 25;
@@ -48,7 +52,6 @@ public class Rocket : MonoBehaviour
             {
                 previous = dis;
                 target = gm.active[i].transform;
-                targetid = i;
                 
             }
         }
@@ -97,11 +100,22 @@ public class Rocket : MonoBehaviour
             if (other.gameObject.GetComponent<TankStats>())
             {
                 target = null;
-                Destroy(this.gameObject);
-                other.gameObject.GetComponent<TankStats>().TakeDamaged(damage);
+                KillMe();
+                other.gameObject.GetComponent<TankStats>().TakeDamaged(damage, playerID, name);
                 
             }
         }
+    }
+    
+    public void SetID(int id)
+    {
+        playerID = id;
+        Debug.Log("Rocket ID set: " + playerID);
+    }
+
+    public void KillMe()
+    {
+        Destroy(this.gameObject);
     }
     
 }

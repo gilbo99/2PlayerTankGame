@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -10,6 +11,8 @@ public class AbilitiesBox : MonoBehaviour
     private Abilities abilities;
     public List<GameObject> item;
     private GameObject give;
+    
+    
 
     private enum Abilities
     {
@@ -24,6 +27,8 @@ public class AbilitiesBox : MonoBehaviour
 
         abilities = (Abilities)Random.Range(0,Enum.GetNames(typeof(Abilities)).Length);
 
+        //abilities = (Abilities)1;
+        
         
         switch (abilities)
         {

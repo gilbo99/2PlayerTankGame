@@ -14,18 +14,21 @@ public class TankStats : MonoBehaviour
     public int health;
     public int id;
 
+    public int attackingid;
+
     public void Awake()
     {
         gm = FindObjectOfType<GameManager>();
         uIManager = FindObjectOfType<UIManager>();
     }
 
-    public void TakeDamaged(int damage)
+    public void TakeDamaged(int damage, int enemyid, string Weapon)
     {
         health -= damage;
         uIManager.SetPlayerHP(health, id);
         if (health <= 0)
         {
+            Debug.Log("Player: " + (enemyid+1) + " Killed Player: " + (id+1) + " with " + Weapon);
             gm.active.RemoveAt(id);
             Destroy(this.gameObject);
         }

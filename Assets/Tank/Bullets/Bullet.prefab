@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 2798545642169325408}
   m_Layer: 0
   m_Name: Bullet
-  m_TagString: Untagged
+  m_TagString: Bullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -119,10 +119,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: de4c824beb15d08449c1580bd2e37b03, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  name: Simble Bullet
   damage: 1
   speed: 40
   lifespan: 5
   cooldown: 0.5
+  playerid: 0
   lastVelocity: {x: 0, y: 0, z: 0}
 --- !u!54 &2798545642169325408
 Rigidbody:

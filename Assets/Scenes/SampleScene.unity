@@ -156,6 +156,8 @@ MonoBehaviour:
   spawnLocation:
   - {fileID: 1797393760}
   - {fileID: 592993058}
+  - {fileID: 876969712}
+  - {fileID: 1587825483}
   itemSpawn:
   - {fileID: 1014361898}
   - {fileID: 1129572633}
@@ -167,7 +169,6 @@ MonoBehaviour:
   - {fileID: 998160833295990754, guid: 16175656cac001949ae2f876c38d4aeb, type: 3}
   active: []
   name: []
-  tankLocation: []
   playing: 2
   uIManager: {fileID: 172153456}
 --- !u!4 &172153455
@@ -199,6 +200,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   players:
   - {fileID: 1707354017}
+  - {fileID: 308228496}
+  - {fileID: 308228496}
   - {fileID: 308228496}
   reset: {fileID: 820512011}
 --- !u!1 &243758721
@@ -830,7 +833,7 @@ Transform:
   m_GameObject: {fileID: 592993058}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -22.58, y: 1.124, z: 6.37}
+  m_LocalPosition: {x: -22.58, y: 1, z: 6.37}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1123,7 +1126,7 @@ Transform:
   m_GameObject: {fileID: 876969712}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 20.54, y: 0.87, z: 7.1}
+  m_LocalPosition: {x: 20.54, y: 1, z: 7.1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1290,7 +1293,7 @@ Transform:
   m_GameObject: {fileID: 1587825483}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -22.82, y: 0.97, z: -6.67}
+  m_LocalPosition: {x: -22.82, y: 1, z: -6.67}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1829,7 +1832,7 @@ Transform:
   m_GameObject: {fileID: 1797393760}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 20.52, y: 0.9, z: -5.77}
+  m_LocalPosition: {x: 20.52, y: 1, z: -5.77}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

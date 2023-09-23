@@ -119,7 +119,7 @@ GameObject:
   - component: {fileID: 202875535820055352}
   m_Layer: 0
   m_Name: Mine
-  m_TagString: Untagged
+  m_TagString: Mine
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -200,4 +200,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 610d0ab6702c0d44da7da4a22a5bd3d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerID: 0
+  name: Mines
   damage: 10

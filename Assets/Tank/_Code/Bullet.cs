@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
+    public string name;
+    
     private Rigidbody _rb;
     
     private GameManager gm;
@@ -15,10 +17,12 @@ public class Bullet : MonoBehaviour
     public float lifespan;
     public float cooldown;
 
+    public int playerid;
 
     public Vector3 lastVelocity;
     public void Awake()
     {
+        
         _rb = this.GetComponent<Rigidbody>();
         _rb.AddForce(transform.forward * speed, ForceMode.Impulse);
         Destroy(this.gameObject, lifespan);
@@ -50,11 +54,24 @@ public class Bullet : MonoBehaviour
 
             var dir = Vector3.Reflect(lastVelocity.normalized, other.contacts[0].normal);
             _rb.velocity = dir * Mathf.Max(speed2, 0f);
-            
-            Destroy(this.gameObject);
-            other.gameObject.GetComponent<TankStats>().TakeDamaged(damage);
+
+            Killme();
+            other.gameObject.GetComponent<TankStats>().TakeDamaged(damage, playerid, name);
             
         }
+
+        
+    }
+
+    public void Killme()
+    {
+        Destroy(this.gameObject);
+    }
+    
+    public void SetID(int id)
+    {
+        playerid = id;
+       
     }
     
     

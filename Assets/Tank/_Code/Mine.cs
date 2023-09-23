@@ -6,11 +6,16 @@ public class Mine : MonoBehaviour
 {
     private Rigidbody rb;
     private GameManager gm;
+
+    public int playerID;
+
+    public string name;
     
     //Mine stats
     public int damage;
     public void Awake()
     {
+        
         gm = FindObjectOfType<GameManager>();
         rb = this.GetComponent<Rigidbody>();
         
@@ -21,9 +26,15 @@ public class Mine : MonoBehaviour
             if (other.gameObject.GetComponent<TankStats>())
             {
                 Destroy(this.gameObject);
-                other.gameObject.GetComponent<TankStats>().TakeDamaged(damage);
+                other.gameObject.GetComponent<TankStats>().TakeDamaged(damage, playerID, name);
                 
             }
+        
+    }
+    
+    public void SetID(int id)
+    {
+        playerID = id;
         
     }
 }

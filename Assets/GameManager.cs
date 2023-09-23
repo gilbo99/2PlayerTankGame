@@ -19,8 +19,6 @@ public class GameManager : MonoBehaviour
     
     public new List<string> name;
 
-    public List<Transform> tankLocation;
-
     public int playing;
     
     [SerializeField]
@@ -30,6 +28,7 @@ public class GameManager : MonoBehaviour
     public void Awake()
     {
         SetUpGame();
+        
     }
 
     
