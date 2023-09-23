@@ -20,6 +20,8 @@ public class GameManager : MonoBehaviour
     public new List<string> name;
 
     public int playing;
+
+    public bool firstSetup = false;
     
     [SerializeField]
     private UIManager uIManager;
@@ -36,10 +38,12 @@ public class GameManager : MonoBehaviour
     // just is a spawn list of 4 spawn but will update too random locaions 
     public void SetUpGame()
     {
+        if (firstSetup)
+        {
+            uIManager.UpdateScore(active[0].GetComponent<TankStats>().id);
+        }
         Cursor.visible = false;
         ClearList();
-        
-        //tankLocation.Clear();
         
 
 
@@ -64,7 +68,8 @@ public class GameManager : MonoBehaviour
             
           
         }
-        uIManager.Toggle(false);   
+        uIManager.Toggle(false);
+        firstSetup = true;
     }
 
 

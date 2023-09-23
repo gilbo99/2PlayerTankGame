@@ -13,6 +13,7 @@ public class AbilitiesBox : MonoBehaviour
     private GameObject give;
     
     
+    
 
     private enum Abilities
     {
@@ -27,7 +28,7 @@ public class AbilitiesBox : MonoBehaviour
 
         abilities = (Abilities)Random.Range(0,Enum.GetNames(typeof(Abilities)).Length);
 
-        //abilities = (Abilities)1;
+        abilities = (Abilities)1;
         
         
         switch (abilities)
@@ -51,4 +52,6 @@ public class AbilitiesBox : MonoBehaviour
     {
         return give;
     }
+    
+    
 }

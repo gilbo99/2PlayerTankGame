@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class SpecialAbilities : MonoBehaviour
 {
+    private UIManager ui;
     
     public GameObject abilities;
     
@@ -16,6 +17,7 @@ public class SpecialAbilities : MonoBehaviour
     {
         playerid = this.GetComponent<TankStats>().id; 
         Debug.Log("Tank id: " + playerid);
+        ui = FindObjectOfType<UIManager>();
     }
 
     public void Update()
@@ -67,6 +69,7 @@ public class SpecialAbilities : MonoBehaviour
             shield.SetID(playerid);
             shield.transform.position = Spawn;
             shield.transform.parent = transform;
+            ui.ShieldOn(playerid, true);
         }
         
         

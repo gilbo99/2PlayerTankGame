@@ -9,8 +9,16 @@ public class Shield : MonoBehaviour
     public int shieldHP;
 
     private int playerid;
+    
+    private UIManager ui;
 
     public GameObject shotID;
+
+    public void Awake()
+    {
+        ui = FindObjectOfType<UIManager>();
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         
@@ -61,5 +69,9 @@ public class Shield : MonoBehaviour
         }
         return id;
     }
-        
+
+    public void OnDestroy()
+    {
+        ui.ShieldOn(playerid, false);
+    }
 }
