@@ -21,8 +21,11 @@ public class Crosshair : MonoBehaviour
 
     public void OnDrawGizmos()
     {
-        Gizmos.color = Color.blue;
-        Gizmos.DrawLine(aim.transform.position, test.transform.position);
+        if (aim != null && test!= null)
+        {
+            Gizmos.color = Color.blue;
+            Gizmos.DrawLine(aim.transform.position, test.transform.position);
+        }
     }
 
     public void MakeCrossHair()

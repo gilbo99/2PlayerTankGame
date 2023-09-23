@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
-    public string name;
+    public new string name;
     
     private Rigidbody _rb;
     
@@ -16,7 +16,6 @@ public class Bullet : MonoBehaviour
     public float speed;
     public float lifespan;
     public float cooldown;
-
     public int playerid;
 
     public Vector3 lastVelocity;

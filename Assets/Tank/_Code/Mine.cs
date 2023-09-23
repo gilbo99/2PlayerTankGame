@@ -9,7 +9,7 @@ public class Mine : MonoBehaviour
 
     public int playerID;
 
-    public string name;
+    public new string name;
     
     //Mine stats
     public int damage;
@@ -18,7 +18,7 @@ public class Mine : MonoBehaviour
         
         gm = FindObjectOfType<GameManager>();
         rb = this.GetComponent<Rigidbody>();
-        
+        //rb.velocity = Vector3.zero;
     }
     
     private void OnCollisionEnter(Collision other)

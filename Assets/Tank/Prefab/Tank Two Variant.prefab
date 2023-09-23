@@ -24,6 +24,10 @@ PrefabInstance:
       propertyPath: forward
       value: 273
       objectReference: {fileID: 0}
+    - target: {fileID: 2237599234418509364, guid: 1a09827fe090ebf4c8aa6f02325d70fc, type: 3}
+      propertyPath: m_NormalizedViewPortRect.x
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 2777789870822032284, guid: 1a09827fe090ebf4c8aa6f02325d70fc, type: 3}
       propertyPath: m_Name
       value: Tank Two Variant
@@ -72,7 +76,8 @@ PrefabInstance:
       propertyPath: shoot
       value: 305
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 6268563757006647498, guid: 1a09827fe090ebf4c8aa6f02325d70fc, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []

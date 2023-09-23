@@ -11,7 +11,7 @@ public class Rocket : MonoBehaviour
     private Rigidbody rb;
     private GameManager gm;
 
-    public string name;
+    public new string name;
 
     
     public int playerID;
