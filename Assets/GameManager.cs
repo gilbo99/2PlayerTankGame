@@ -25,7 +25,12 @@ public class GameManager : MonoBehaviour
     
     [SerializeField]
     private UIManager uIManager;
-    
+
+
+
+    public delegate void UpdateScore(int id);
+
+    public event UpdateScore Score;
 
     public void Awake()
     {
@@ -40,7 +45,8 @@ public class GameManager : MonoBehaviour
     {
         if (firstSetup)
         {
-            uIManager.UpdateScore(active[0].GetComponent<TankStats>().id);
+            //uIManager.UpdateScore(active[0].GetComponent<TankStats>().id);
+            Score?.Invoke(active[0].GetComponent<TankStats>().id);
         }
         Cursor.visible = false;
         ClearList();
