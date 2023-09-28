@@ -8,50 +8,16 @@ using Random = UnityEngine.Random;
 
 public class AbilitiesBox : MonoBehaviour
 {
-    private Abilities abilities;
     public List<GameObject> item;
     private GameObject give;
     
-    
-    
-
-    private enum Abilities
-    {
-        Rocket,
-        Mine,
-        Shield
-    }
-
-
     public void Awake()
     {
-
-        abilities = (Abilities)Random.Range(0,Enum.GetNames(typeof(Abilities)).Length);
-
-        //abilities = (Abilities)2;
-        
-        
-        switch (abilities)
-        {
-            case Abilities.Rocket:
-                give = item[0];
-                break;
-            case Abilities.Mine:
-                give = item[1];
-                break;
-            case Abilities.Shield:
-                give = item[2];
-                break;
-            
-        }
-        
+        give = item[Random.Range(0, item.Count)];
     }
-
-
+    
     public GameObject SendItem()
     {
         return give;
     }
-    
-    
 }

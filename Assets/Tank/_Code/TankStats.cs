@@ -7,11 +7,6 @@ public class TankStats : MonoBehaviour
 {
     
     private UIManager uIManager;
-
-    public delegate void UpdateHealth(int health, int id);
-
-    public event UpdateHealth Health;
-
     private GameManager gm;
     
 
@@ -29,8 +24,8 @@ public class TankStats : MonoBehaviour
     public void TakeDamaged(int damage, int enemyid, string Weapon)
     {
         health -= damage;
-        //uIManager.SetPlayerHP(health, id);
-        Health?.Invoke(health, id);
+        uIManager.SetPlayerHP(health, id);
+        
         if (health <= 0)
         {
             Debug.Log("Player: " + (enemyid+1) + " Killed Player: " + (id+1) + " with " + Weapon);
@@ -40,14 +35,10 @@ public class TankStats : MonoBehaviour
     }
 
 
-    private void OnEnable() 
-    {
-        uIManager.TankStatSub(id);
-    }
-
+   
     private void OnDestroy()
     {
-        uIManager.TankStatUnSub(id);
+        
         if (gm.active.Count == 1)
         {
             uIManager.Toggle(true);

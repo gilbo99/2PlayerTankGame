@@ -71,17 +71,9 @@ public class UIManager : MonoBehaviour
 
 
 
-   public void TankStatSub(int sub)
-   {
-               gm.active[sub].GetComponent<TankStats>().Health += SetPlayerHP;
-       
-   }
    
-   public void TankStatUnSub(int sub)
-   {
-       players[sub].GetComponent<TankStats>().Health -= SetPlayerHP;
-       
-   }
+   
+   
 
 
 }
