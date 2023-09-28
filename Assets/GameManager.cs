@@ -64,13 +64,17 @@ public class GameManager : MonoBehaviour
         for(int i = 0; i < playing; i++)
         {
             
+            
             var clone = Instantiate(tank[i],spawnLocation[i].transform.position, transform.rotation);
             clone.gameObject.GetComponent<TankStats>().id = i;
+            uIManager.HealthSubTo(clone);
             //tankLocation.Add(clone.transform);
             active.Add(clone);
+            clone.GetComponent<TankStats>().sendDeadMessage += RemoveSub;
             var num = i + 1;
             name.Add("Player: " + num.ToString());
             uIManager.SetPlayerHP(clone.gameObject.GetComponent<TankStats>().health , i);
+            
             
           
         }
@@ -78,6 +82,8 @@ public class GameManager : MonoBehaviour
         firstSetup = true;
     }
 
+
+   
 
     public void ClearList()
     {
@@ -96,4 +102,23 @@ public class GameManager : MonoBehaviour
         active.Clear();
         name.Clear();
     }
+
+    public void RemoveSub(GameObject tank, int id)
+    {
+        
+        Debug.Log("dead" + tank);
+        uIManager.HealthUnSubTo(tank);
+        tank.GetComponent<TankStats>().sendDeadMessage -= RemoveSub;
+        
+        active.RemoveAt(id);
+        if(active.Count == 1)
+        {
+            uIManager.Toggle(true);
+            Cursor.visible = true;
+        }
+        
+        
+        
+    }
+   
 }

@@ -26,16 +26,12 @@ public class UIManager : MonoBehaviour
 
    public void OnEnable()
    {
-       
        gm.Score += UpdateScore;
-
-       
    }
     
    public void OnDisable()
    {
        gm.Score -= UpdateScore;
-       
    }
 
    public void SetPlayerHP(int hp , int id)
@@ -49,6 +45,7 @@ public class UIManager : MonoBehaviour
        if (reset.gameObject != null)
        { 
            reset.gameObject.SetActive(active);
+           
        }
       
    }
@@ -68,6 +65,23 @@ public class UIManager : MonoBehaviour
        var test = currentScore[id].ToString();
        score[id].text = test;
    }
+
+
+   public void HealthSubTo(GameObject tank)
+   {
+
+       tank.GetComponent<TankStats>().setHealth += SetPlayerHP;
+
+   }
+   
+   public void HealthUnSubTo(GameObject tank)
+   {
+
+       tank.GetComponent<TankStats>().setHealth -= SetPlayerHP;
+
+   }
+   
+   
 
 
 

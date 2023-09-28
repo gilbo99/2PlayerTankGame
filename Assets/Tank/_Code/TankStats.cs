@@ -6,7 +6,7 @@ using UnityEngine;
 public class TankStats : MonoBehaviour
 {
     
-    private UIManager uIManager;
+    //private UIManager uIManager;
     private GameManager gm;
     
 
@@ -15,21 +15,29 @@ public class TankStats : MonoBehaviour
 
     public int attackingid;
 
+    public delegate void UpdateHealth(int senthealth, int sendid);
+    public event UpdateHealth setHealth;
+
+
+    public delegate void Dead(GameObject tank, int sendID);
+
+    public event Dead sendDeadMessage;
+        
+    
     public void Awake()
     {
         gm = FindObjectOfType<GameManager>();
-        uIManager = FindObjectOfType<UIManager>();
+        //uIManager = FindObjectOfType<UIManager>();
     }
 
     public void TakeDamaged(int damage, int enemyid, string Weapon)
     {
         health -= damage;
-        uIManager.SetPlayerHP(health, id);
-        
+        //uIManager.SetPlayerHP(health, id);
+        setHealth?.Invoke(health, id);
         if (health <= 0)
         {
             Debug.Log("Player: " + (enemyid+1) + " Killed Player: " + (id+1) + " with " + Weapon);
-            gm.active.RemoveAt(id);
             Destroy(this.gameObject);
         }
     }
@@ -38,11 +46,9 @@ public class TankStats : MonoBehaviour
    
     private void OnDestroy()
     {
-        
-        if (gm.active.Count == 1)
-        {
-            uIManager.Toggle(true);
-            Cursor.visible = true;
-        }
+        //uIManager.HealthUnSubTo(this.gameObject);
+        sendDeadMessage?.Invoke(this.gameObject, id);
     }
+
+    
 }
