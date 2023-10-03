@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TankStats : MonoBehaviour
+public class TankStats : MonoBehaviour, IDamage
 {
     
     //private UIManager uIManager;
@@ -30,7 +30,7 @@ public class TankStats : MonoBehaviour
         //uIManager = FindObjectOfType<UIManager>();
     }
 
-    public void TakeDamaged(int damage, int enemyid, string Weapon)
+    public void TakeDamage(int damage, int enemyid, string Weapon)
     {
         health -= damage;
         //uIManager.SetPlayerHP(health, id);
@@ -43,6 +43,7 @@ public class TankStats : MonoBehaviour
     }
 
 
+    
    
     private void OnDestroy()
     {
@@ -50,5 +51,11 @@ public class TankStats : MonoBehaviour
         sendDeadMessage?.Invoke(this.gameObject, id);
     }
 
-    
+
+    public void Damaged(int damage, int enemyid, string Weapon)
+    {
+        TakeDamage(damage, enemyid, Weapon);
+    }
 }
+
+

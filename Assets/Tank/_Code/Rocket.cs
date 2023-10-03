@@ -101,7 +101,8 @@ public class Rocket : MonoBehaviour
             {
                 target = null;
                 KillMe();
-                other.gameObject.GetComponent<TankStats>().TakeDamaged(damage, playerID, name);
+                other.gameObject.GetComponent<TankStats>().TakeDamage(damage, playerID, name);
+                
                 
             }
         }

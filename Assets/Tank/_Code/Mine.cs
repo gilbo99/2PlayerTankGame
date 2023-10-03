@@ -26,7 +26,7 @@ public class Mine : MonoBehaviour
             if (other.gameObject.GetComponent<TankStats>())
             {
                 Destroy(this.gameObject);
-                other.gameObject.GetComponent<TankStats>().TakeDamaged(damage, playerID, name);
+                other.gameObject.GetComponent<TankStats>().TakeDamage(damage, playerID, name);
                 
             }
         

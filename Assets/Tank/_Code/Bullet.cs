@@ -55,7 +55,7 @@ public class Bullet : MonoBehaviour
             _rb.velocity = dir * Mathf.Max(speed2, 0f);
 
             Killme();
-            other.gameObject.GetComponent<TankStats>().TakeDamaged(damage, playerid, name);
+            other.gameObject.GetComponent<TankStats>().TakeDamage(damage, playerid, name);
             
         }
 

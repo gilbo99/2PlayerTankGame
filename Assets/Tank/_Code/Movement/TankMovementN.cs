@@ -13,8 +13,6 @@ public class TankMovementN : MonoBehaviour
     public int rotateSpeed;
 
 
- 
-    
     
     void Start()
     {
@@ -33,13 +31,6 @@ public class TankMovementN : MonoBehaviour
     {
         Debug.Log(context.ReadValue<Vector2>());
       
-    }
-
-
-    // Update is called once per frame
-    void Update()
-    {
-       
     }
     
     
