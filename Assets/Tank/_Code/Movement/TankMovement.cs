@@ -1,9 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
+using Interface;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class TankMovement : MonoBehaviour
+public class TankMovement : MonoBehaviour, IPauseable
 {
 
     public float speed;
@@ -17,6 +18,8 @@ public class TankMovement : MonoBehaviour
     public KeyCode right;
     public KeyCode boost;
 
+    public bool canwalk;
+
 
     public void Start()
     {
@@ -27,53 +30,61 @@ public class TankMovement : MonoBehaviour
 
     void FixedUpdate()
     {
-        if (Input.GetKey(forward))
+        if (canwalk)
         {
+            if (Input.GetKey(forward))
+            {
 
-            rb.AddForce(transform.forward * speed);
+                rb.AddForce(transform.forward * speed);
 
-        }
+            }
 
-        if (Input.GetKey(left))
-        {
-            Vector3 rotateL = new(0, -rotateSpeed, 0);
-            Quaternion deltaRotation = Quaternion.Euler(rotateL * Time.fixedDeltaTime);
-            rb.MoveRotation(rb.rotation * deltaRotation);
-        }
-
-        if (Input.GetKey(right))
-        {
-            Vector3 rotateR = new(0, rotateSpeed, 0);
-            Quaternion deltaRotation = Quaternion.Euler(rotateR * Time.fixedDeltaTime);
-            rb.MoveRotation(rb.rotation * deltaRotation);
-        }
-
-        counter -= Time.deltaTime;
-        if (Input.GetKey(boost) && counter <= 0)
-        {
             if (Input.GetKey(left))
             {
-                rb.velocity = -transform.right * boostSpeed;
-            }else if (Input.GetKey(right))
-            {
-                rb.velocity = transform.right * boostSpeed;
-            }
-            else
-            {
-                rb.velocity = transform.forward * boostSpeed;
+                Vector3 rotateL = new(0, -rotateSpeed, 0);
+                Quaternion deltaRotation = Quaternion.Euler(rotateL * Time.fixedDeltaTime);
+                rb.MoveRotation(rb.rotation * deltaRotation);
             }
 
-            counter = timer;
+            if (Input.GetKey(right))
+            {
+                Vector3 rotateR = new(0, rotateSpeed, 0);
+                Quaternion deltaRotation = Quaternion.Euler(rotateR * Time.fixedDeltaTime);
+                rb.MoveRotation(rb.rotation * deltaRotation);
+            }
 
+            counter -= Time.deltaTime;
+            if (Input.GetKey(boost) && counter <= 0)
+            {
+                if (Input.GetKey(left))
+                {
+                    rb.velocity = -transform.right * boostSpeed;
+                }
+                else if (Input.GetKey(right))
+                {
+                    rb.velocity = transform.right * boostSpeed;
+                }
+                else
+                {
+                    rb.velocity = transform.forward * boostSpeed;
+                }
+
+                counter = timer;
+
+            }
         }
     }
-    
-    
-    
-   
 
 
+    public void Pause()
+    {
+        canwalk = true;
+    }
 
+    public void UnPause()
+    {
+        canwalk = false;
+    }
 }
 
     

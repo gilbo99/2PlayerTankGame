@@ -1,9 +1,8 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
-using Random = UnityEngine.Random;
+
 
 
 public class AbilitiesBox : MonoBehaviour
@@ -13,7 +12,7 @@ public class AbilitiesBox : MonoBehaviour
     
     public void Awake()
     {
-        give = item[Random.Range(0, item.Count)];
+        give = item[UnityEngine.Random.Range(0, item.Count)];
     }
     
     public GameObject SendItem()

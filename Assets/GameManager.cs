@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Interface;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
@@ -19,6 +20,8 @@ public class GameManager : MonoBehaviour
     
     public new List<string> name;
 
+    public bool gamePause = false;
+
     public int playing;
 
     public bool firstSetup = false;
@@ -26,19 +29,43 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     private UIManager uIManager;
 
-
+    public KeyCode pauseKey;
 
     public delegate void UpdateScore(int id);
 
     public event UpdateScore Score;
+    
+    
+    public delegate void PauseGame();
 
-    public void Awake()
+    public event PauseGame pause;
+
+    public void Update()
     {
-        SetUpGame();
-        
+        if (Input.GetKeyDown(pauseKey))     
+        {
+            if (gamePause)
+            {
+                for (int i = 0; i < active.Count; i++)
+                {
+                    active[i].GetComponent<IPauseable>().Pause();
+                    pause?.Invoke();
+                }
+                
+            }
+            else
+            {
+                for (int i = 0; i < active.Count; i++)
+                {
+                    active[i].GetComponent<IPauseable>().UnPause();
+                    pause?.Invoke();
+                }
+            }
+            
+            gamePause = !gamePause;
+        }
     }
 
-    
     //SetUpGame(how many player) game will spawn upto 4 players 
     // just is a spawn list of 4 spawn but will update too random locaions 
     public void SetUpGame()

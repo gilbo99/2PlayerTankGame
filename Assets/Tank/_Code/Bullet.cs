@@ -1,9 +1,10 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Interface;
 using UnityEngine;
 
-public class Bullet : MonoBehaviour
+public class Bullet : MonoBehaviour, IPauseable
 {
     public new string name;
     
@@ -18,6 +19,10 @@ public class Bullet : MonoBehaviour
     public float cooldown;
     public int playerid;
 
+    public bool pause = false;
+    
+    public Vector3 pauseSpeed;
+
     public Vector3 lastVelocity;
     public void Awake()
     {
@@ -26,11 +31,21 @@ public class Bullet : MonoBehaviour
         _rb.AddForce(transform.forward * speed, ForceMode.Impulse);
         Destroy(this.gameObject, lifespan);
         gm = FindObjectOfType<GameManager>();
+        
     }
+
+    public void Start()
+    {
+        gm.pause += Toggle;
+    }
+
+    
+
 
     public void Update()
     {
         lastVelocity = _rb.velocity;
+        
     }
 
 
@@ -55,8 +70,15 @@ public class Bullet : MonoBehaviour
             _rb.velocity = dir * Mathf.Max(speed2, 0f);
 
             Killme();
-            other.gameObject.GetComponent<TankStats>().TakeDamage(damage, playerid, name);
+            //other.gameObject.GetComponent<TankStats>().Damaged(damage, playerid, name);
+            if (other.gameObject.GetComponent<IDamage>() != null)
+            {
+                other.gameObject.GetComponent<IDamage>().Damaged(damage, playerid, name);
+            }
+
             
+
+
         }
 
         
@@ -64,6 +86,7 @@ public class Bullet : MonoBehaviour
 
     public void Killme()
     {
+        gm.pause -= Toggle;
         Destroy(this.gameObject);
     }
     
@@ -72,7 +95,32 @@ public class Bullet : MonoBehaviour
         playerid = id;
        
     }
-    
-    
-    
+
+    public void Toggle()
+    {
+        
+        if (pause)
+        {
+            Pause();
+        }
+        else
+        {
+            UnPause();
+        }
+        pause = !pause;
+    }
+
+    public void Pause()
+    {
+        
+        pauseSpeed = _rb.velocity;
+        _rb.velocity = new Vector3(0, 0, 0);
+        Debug.Log(pauseSpeed);
+        
+    }
+
+    public void UnPause()
+    {
+        _rb.velocity = pauseSpeed;
+    }
 }

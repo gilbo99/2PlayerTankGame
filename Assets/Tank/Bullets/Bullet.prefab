@@ -122,9 +122,11 @@ MonoBehaviour:
   name: Simble Bullet
   damage: 1
   speed: 40
-  lifespan: 5
+  lifespan: 100
   cooldown: 0.5
   playerid: 0
+  pause: 1
+  pauseSpeed: {x: 0, y: 0, z: 0}
   lastVelocity: {x: 0, y: 0, z: 0}
 --- !u!54 &2798545642169325408
 Rigidbody:
