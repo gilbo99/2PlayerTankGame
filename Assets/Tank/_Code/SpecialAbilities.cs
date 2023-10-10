@@ -15,7 +15,7 @@ public class SpecialAbilities : MonoBehaviour
 
     public void Start()
     {
-        playerid = this.GetComponent<TankStats>().id; 
+        playerid = this.GetComponent<TankStats>().id += 1; 
         Debug.Log("Tank id: " + playerid);
         ui = FindObjectOfType<UIManager>();
     }

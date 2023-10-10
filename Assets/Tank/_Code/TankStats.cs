@@ -38,7 +38,7 @@ public class TankStats : MonoBehaviour, IDamage
         setHealth?.Invoke(health, id);
         if (health <= 0)
         {
-            Debug.Log("Player: " + (enemyid+1) + " Killed Player: " + (id+1) + " with " + Weapon);
+            Debug.Log("Player: " + (enemyid) + " Killed Player: " + (id) + " with " + Weapon);
             Destroy(this.gameObject);
         }
     }

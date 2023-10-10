@@ -36,7 +36,7 @@ public class Bullet : MonoBehaviour, IPauseable
 
     public void Start()
     {
-        gm.pause += Toggle;
+        //gm.pause += Toggle;
     }
 
     
@@ -86,7 +86,7 @@ public class Bullet : MonoBehaviour, IPauseable
 
     public void Killme()
     {
-        gm.pause -= Toggle;
+        //gm.pause -= Toggle;
         Destroy(this.gameObject);
     }
     
