@@ -38,6 +38,7 @@ public class ArenaManager : MonoBehaviour
     public void Start()
     {
         SetUp();
+        
     }
 
 
