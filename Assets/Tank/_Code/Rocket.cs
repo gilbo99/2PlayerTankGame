@@ -9,7 +9,7 @@ public class Rocket : MonoBehaviour
 {
     public GameObject model;
     private Rigidbody rb;
-    private GameManager gm;
+    private ArenaManager gm;
 
     public new string name;
 
@@ -32,7 +32,7 @@ public class Rocket : MonoBehaviour
     public void Awake()
     {
         
-        gm = FindObjectOfType<GameManager>();
+        gm = FindObjectOfType<ArenaManager>();
         rb = this.GetComponent<Rigidbody>();
         rb.velocity = transform.up * 25;
         Destroy(this.gameObject, lifespan);
@@ -45,14 +45,16 @@ public class Rocket : MonoBehaviour
     {
         for (int i = 0; i < gm.active.Count; i++)
         {
-            
-            
-            dis = Vector3.Distance(this.transform.position, gm.active[i].transform.position);
-            if (dis >= previous)
+
+            if (gm != null)
             {
-                previous = dis;
-                target = gm.active[i].transform;
-                
+                dis = Vector3.Distance(this.transform.position, gm.active[i].transform.position);
+                if (dis >= previous)
+                {
+                    previous = dis;
+                    target = gm.active[i].transform;
+
+                }
             }
         }
     }

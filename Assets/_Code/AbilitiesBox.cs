@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
@@ -15,8 +16,15 @@ public class AbilitiesBox : MonoBehaviour
         give = item[UnityEngine.Random.Range(0, item.Count)];
     }
     
-    public GameObject SendItem()
+    public void OnCollisionEnter(Collision other)
     {
-        return give;
+        if (other.gameObject.TryGetComponent<SpecialAbilities>(out SpecialAbilities Special) && Special.ability == null)
+        {
+            Special.SetAbility(give);
+            Destroy(this.gameObject);
+        }
     }
+    
+   
 }
+

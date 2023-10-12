@@ -2,80 +2,82 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class SpecialAbilities : MonoBehaviour
 {
     private UIManager ui;
     
-    public GameObject abilities;
+    public List<Ability> ability;
     
-    public KeyCode specialShoot;
-    
-    private int playerid;
+    private int shooterid;
 
     public void Start()
     {
-        playerid = this.GetComponent<TankStats>().id += 1; 
-        Debug.Log("Tank id: " + playerid);
+        shooterid = this.GetComponent<TankStats>().id += 1; 
+        Debug.Log("Tank id: " + shooterid);
         ui = FindObjectOfType<UIManager>();
+        GetComponent<TankShoot>().specialShoot += Shoot;
     }
-
-    public void Update()
-    {
-        if (Input.GetKeyDown(specialShoot) && abilities != null)
-        {
-            Shoot();
-            
-        }
-    }
+    
 
     private void Shoot()
     {
-        Vector3 Spawn = new Vector3(this.transform.position.x, this.transform.position.y + 1f, this.transform.position.z);
-        var clone = Instantiate(abilities, Spawn, transform.rotation);
-        SetWeaponID(clone);
-        if (abilities != null && abilities.TryGetComponent<Mine>(out Mine mine)) 
+        if (ability != null)
         {
-            Mines(clone);
+           
+            Vector3 Spawn = new Vector3(this.transform.position.x, this.transform.position.y + 1f, this.transform.position.z);
+            var clone = Instantiate(ability[0].item, Spawn, transform.rotation);
+            SetWeapon(clone);
+
+            ability = null;
         }
-        abilities = null;
     }
 
 
+    public void SetAbility(GameObject received)
+    {
+        //ability = received;
+    }
+/*
     public void OnCollisionEnter(Collision other)
     {
-        if (other.gameObject.CompareTag("Pickup") && abilities == null)
+        if (other.gameObject.GetComponent<AbilitiesBox>() && ability == null)
         {
-            abilities = other.gameObject.GetComponent<AbilitiesBox>().SendItem();
+            ability = other.gameObject.GetComponent<AbilitiesBox>().SendItem();
             Destroy(other.gameObject);
         }
     }
+    */
 
-    public void Mines(GameObject clone)
-    {
-        Vector3 Spawn = new Vector3(this.transform.position.x + -3f, this.transform.position.y + 1f, this.transform.position.z);
-        clone.transform.position = Spawn;
-    }
-
-    private void SetWeaponID(GameObject clone)
+    private void SetWeapon(GameObject clone)
     {
         
         if (clone.TryGetComponent<Rocket>(out Rocket rocket))
         {
-            rocket.SetID(playerid);
+            rocket.SetID(shooterid);
         }else if (clone.TryGetComponent<Shield>(out Shield shield))
         {
             Vector3 Spawn = new Vector3(this.transform.position.x, this.transform.position.y + 0.37f, this.transform.position.z);
-            shield.SetID(playerid);
+            shield.SetID(shooterid);
             shield.transform.position = Spawn;
             shield.transform.parent = transform;
-            ui.ShieldOn(playerid, true);
+            ui.ShieldOn(shooterid, true);
         }
-        
         
     }
 
 
+    private void OnDestroy()
+    {
+        GetComponent<TankShoot>().specialShoot -= Shoot;
+    }
+}
 
 
+[Serializable]
+public class Ability
+{
+    public GameObject item;
+    public Transform spawn;
 }

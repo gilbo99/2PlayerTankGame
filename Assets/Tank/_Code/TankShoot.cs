@@ -8,13 +8,18 @@ public class TankShoot : MonoBehaviour
 {
     //button press
     public KeyCode shoot;
+    public KeyCode specialItem;
     
     public GameObject bullet;
     public GameObject spawnbullet;
+    
 
     public float cooldown;
 
     public int playerid;
+    
+    public delegate void SpecialShoot();
+    public event SpecialShoot specialShoot;
 
 
     public void Start()
@@ -30,6 +35,10 @@ public class TankShoot : MonoBehaviour
             Shoot();
             
 
+        }
+        if (Input.GetKeyDown(specialItem))
+        {
+            specialShoot?.Invoke();
         }
 
     }
@@ -48,6 +57,13 @@ public class TankShoot : MonoBehaviour
             }
             cooldown = bullet.GetComponent<Bullet>().cooldown;
     }
+    
+    
+    
+    
+    
+    
+    
     
     public void SetID(int id)
     {
