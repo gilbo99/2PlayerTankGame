@@ -105,7 +105,7 @@ public class GameManager : MonoBehaviour
             
           
         }
-        uIManager.Toggle(false);
+        //uIManager.Toggle(false);
         firstSetup = true;
     }
 
@@ -130,17 +130,16 @@ public class GameManager : MonoBehaviour
         name.Clear();
     }
 
-    public void RemoveSub(GameObject tank, int id)
+    public void RemoveSub(GameObject tank)
     {
         
         Debug.Log("dead" + tank);
         uIManager.HealthUnSubTo(tank);
         tank.GetComponent<TankStats>().sendDeadMessage -= RemoveSub;
         
-        active.RemoveAt(id);
         if(active.Count == 1)
         {
-            uIManager.Toggle(true);
+            //uIManager.Toggle(true);
             Cursor.visible = true;
         }
         

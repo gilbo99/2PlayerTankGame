@@ -20,7 +20,7 @@ public class TankStats : MonoBehaviour, IDamage
     public event UpdateHealth setHealth;
 
 
-    public delegate void Dead(GameObject tank, int sendID);
+    public delegate void Dead(GameObject tank);
 
     public event Dead sendDeadMessage;
         
@@ -49,7 +49,7 @@ public class TankStats : MonoBehaviour, IDamage
     private void OnDestroy()
     {
         //uIManager.HealthUnSubTo(this.gameObject);
-        sendDeadMessage?.Invoke(this.gameObject, id);
+        sendDeadMessage?.Invoke(this.gameObject);
     }
 
 

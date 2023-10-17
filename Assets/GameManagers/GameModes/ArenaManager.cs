@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -33,11 +34,17 @@ public class ArenaManager : MonoBehaviour
     public delegate void PauseGame();
 
     public event PauseGame pause;
+    
+    public delegate void SetupUI(int players);
+
+    public event SetupUI uiSetup;
+    
 
 
     public void Start()
     {
         SetUp();
+        uiSetup?.Invoke(playing);
         
     }
 
@@ -56,8 +63,10 @@ public class ArenaManager : MonoBehaviour
 
     public void SpawnPlayers(int i,Transform spawn)
     {
+        
         var clone = Instantiate(tank[i],spawn.position, spawn.rotation);
         clone.gameObject.GetComponent<TankStats>().id = i;
+        clone.GetComponent<TankStats>().sendDeadMessage += RemovePlayer;
         active.Add(clone);
         var num = i + 1;
         name.Add("Player: " + num.ToString());
@@ -76,15 +85,24 @@ public class ArenaManager : MonoBehaviour
         name.Clear();
     }
 
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+
+
+    private void RemovePlayer(GameObject player)
+    {
+        for (int i = 0; i < active.Count; i++)
+        {
+            if(  active[i] == player)
+            {
+                active[i].GetComponent<TankStats>().sendDeadMessage -= RemovePlayer;
+                active.RemoveAt(i);
+            }
+        }
+
+        if (active.Count == 1)
+        {
+            Score?.Invoke(active[0].GetComponent<TankStats>().id);
+        }
+    }
+
     
 }

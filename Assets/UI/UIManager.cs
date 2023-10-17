@@ -7,8 +7,9 @@ using TMPro;
 
 public class UIManager : MonoBehaviour
 {
+    public List<GameObject> playerHud;
    
-   public List<TextMeshProUGUI> players;
+   public List<TextMeshProUGUI> playerhp;
 
    public List<TextMeshProUGUI> score;
 
@@ -21,34 +22,41 @@ public class UIManager : MonoBehaviour
    
    public GameObject reset;
 
-   public GameManager gm;
+   public ArenaManager gameMode;
 
-
-   public void OnEnable()
+   public void Start()
    {
-       gm.Score += UpdateScore;
+       gameMode.Score += UpdateScore;
+       gameMode.uiSetup += LayoutUI;
+       LayoutUI(2);
    }
-    
+
+   private void LayoutUI(int player)
+   {
+       for (int j = 0; j < player; j++)
+       {
+           var clone = Instantiate(playerHud[j]);
+           playerhp.Add(clone.transform.GetChild(0).GetComponent<TextMeshProUGUI>()); 
+           shield.Add(clone.transform.GetChild(2).gameObject); 
+           boost.Add(clone.transform.GetChild(3).gameObject); 
+           score.Add(clone.transform.GetChild(4).GetComponent<TextMeshProUGUI>()); 
+       }
+       
+   }
+
+
    public void OnDisable()
    {
-       gm.Score -= UpdateScore;
+       gameMode.Score -= UpdateScore;
    }
 
    public void SetPlayerHP(int hp , int id)
    {
-         players[id].text = hp.ToString();
+       playerhp[id].text = hp.ToString();
       
    }
 
-   public void Toggle(bool active)
-   {
-       if (reset.gameObject != null)
-       { 
-           reset.gameObject.SetActive(active);
-           
-       }
-      
-   }
+   
 
    public void ShieldOn(int id,bool t)
    {
@@ -59,11 +67,11 @@ public class UIManager : MonoBehaviour
        boost[id].SetActive(t);
    }
 
-   public void UpdateScore(int id)
+    void UpdateScore(int id)
    {
-       currentScore[id]++;
-       var test = currentScore[id].ToString();
-       score[id].text = test;
+           currentScore[id]++;
+           var test = currentScore[id].ToString();
+           score[id].text = test;
    }
 
 

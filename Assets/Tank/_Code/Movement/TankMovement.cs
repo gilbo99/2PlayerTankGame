@@ -4,7 +4,7 @@ using Interface;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class TankMovement : MonoBehaviour, IPauseable
+public class TankMovement : MonoBehaviour
 {
 
     public float speed;
@@ -17,8 +17,7 @@ public class TankMovement : MonoBehaviour, IPauseable
     public KeyCode left;
     public KeyCode right;
     public KeyCode boost;
-
-    public bool canwalk;
+    
 
 
     public void Start()
@@ -30,8 +29,7 @@ public class TankMovement : MonoBehaviour, IPauseable
 
     void FixedUpdate()
     {
-        if (canwalk)
-        {
+        
             if (Input.GetKey(forward))
             {
 
@@ -72,19 +70,10 @@ public class TankMovement : MonoBehaviour, IPauseable
                 counter = timer;
 
             }
-        }
+        
     }
 
 
-    public void Pause()
-    {
-        canwalk = true;
-    }
-
-    public void UnPause()
-    {
-        canwalk = false;
-    }
 }
 
     
