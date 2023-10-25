@@ -30,6 +30,6 @@ public class StartOn : MonoBehaviour
     public void StartGame()
     {
         gm.SetUpGame();
-        GetComponent<StageManager>().SwitchState(startOff);
+            //GetComponent<StageManager>().SwitchState(startOff);
     }
 }

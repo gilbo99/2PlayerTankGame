@@ -1,12 +1,13 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Andrew;
 using UnityEngine;
 
 public class StageManager : MonoBehaviour
 {
-    public MonoBehaviour CurrentState;
-    public MonoBehaviour StartState;
+    public StateBase CurrentState;
+    public StateBase StartState;
 
     public void Start()
     {
@@ -16,7 +17,7 @@ public class StageManager : MonoBehaviour
 
 
 
-    public void SwitchState(MonoBehaviour newState)
+    public void SwitchState(StateBase newState)
     {
         if (newState == CurrentState)
         {

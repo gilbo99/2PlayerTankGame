@@ -3,15 +3,26 @@ using System.Collections.Generic;
 using Interface;
 using UnityEngine;
 
-public class TankOff : MonoBehaviour
+
+namespace Andrew
 {
-    public GameManager gm;
-    public void OnEnable()
+
+
+    public class TankOff : StateBase
     {
-        for (int i = 0; i < gm.active.Count; i++)
+        public ArenaManager gameManager;
+
+        
+        public void OnEnable()
         {
-            gm.active[i].GetComponent<IPauseable>().Pause();
+            for (int i = 0; i < gameManager.active.Count; i++)
+            {
+                gameManager.active[i].gameObject.SetActive(false);
+            }
+
+       
         }
-            
+        
+       
     }
 }
