@@ -11,12 +11,12 @@ namespace Andrew
     public class StateBase : MonoBehaviour
     {
         public StageManager stageManager;
-        public StateBase stateBase;
+        
 
         public void Awake()
         {
             stageManager = this.GetComponent<StageManager>();
-            stateBase = this.stateBase;
+            
         }
 
         

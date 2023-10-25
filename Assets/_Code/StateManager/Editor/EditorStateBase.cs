@@ -16,7 +16,8 @@ public class EditorStateBase : Editor
 
         if (GUILayout.Button("Change State"))
         {
-            (target as StateBase)?.stateBase.stageManager.SwitchState(target as StateBase);
+            //(target as StateBase)?.stateBase.stageManager.SwitchState(target as StateBase);
+            (target as StateBase)?.stageManager.SwitchState(target as StateBase);
         }
         
         
