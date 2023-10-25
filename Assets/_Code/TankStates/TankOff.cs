@@ -11,7 +11,6 @@ namespace Andrew
     public class TankOff : StateBase
     {
         public ArenaManager gameManager;
-
         
         public void OnEnable()
         {
