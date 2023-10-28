@@ -1,0 +1,117 @@
+{
+    "name": "Gilbo Input",
+    "maps": [
+        {
+            "name": "On Foot",
+            "id": "13a501e3-06af-4c7d-b3f8-9a07f33f0d55",
+            "actions": [
+                {
+                    "name": "Fire",
+                    "type": "Button",
+                    "id": "1427cce2-8710-42d2-a40e-ae1f41f072a1",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "Hold",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "f4213e15-caf5-4082-9d85-fff37c2ba865",
+                    "path": "<Keyboard>/space",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Fire",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "fc387f50-3ff1-4c7a-bdc3-bfa2ea2a78aa",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Fire",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        },
+        {
+            "name": "In Car",
+            "id": "09ae7a8c-f7d7-4c81-a6d3-c91c6d39faa6",
+            "actions": [
+                {
+                    "name": "Move",
+                    "type": "Value",
+                    "id": "8399ed42-3dfa-4646-ab7f-3a54e0edd3ec",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "WASD",
+                    "id": "6c7260ca-c91a-4160-bf22-bb7eb8b74f76",
+                    "path": "2DVector",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Move",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "Up",
+                    "id": "77475e7f-d092-4a91-96c0-c4a5398aed51",
+                    "path": "<Keyboard>/w",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Move",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "Down",
+                    "id": "640fa091-6296-43c4-a106-c6c61bd13031",
+                    "path": "<Keyboard>/s",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Move",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "Left",
+                    "id": "3f09448d-3eb7-49a8-a32b-9be0dde259ed",
+                    "path": "<Keyboard>/a",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Move",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "Right",
+                    "id": "824ba7e5-ad18-4758-bad6-5e4a5df0e0b9",
+                    "path": "<Keyboard>/d",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Move",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}

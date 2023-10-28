@@ -246,7 +246,7 @@ GameObject:
   - component: {fileID: 5880100563965471430}
   - component: {fileID: -3711758973136238521}
   - component: {fileID: 7439367278938363517}
-  - component: {fileID: 2405777053565154320}
+  - component: {fileID: 4149807968477294775}
   - component: {fileID: 5926833675752689561}
   m_Layer: 6
   m_Name: Tank One
@@ -292,7 +292,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2777789870822032284}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 97480c50a4109db43b2270a6fabb36d6, type: 3}
   m_Name: 
@@ -305,7 +305,6 @@ MonoBehaviour:
   left: 97
   right: 100
   boost: 115
-  canwalk: 0
 --- !u!54 &4984882307795721535
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -361,12 +360,14 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2777789870822032284}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b4f724a38b723a94cbf462c233a88d2c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ability: {fileID: 0}
+  ability:
+  - item: {fileID: 0}
+    spawn: {fileID: 0}
 --- !u!114 &7439367278938363517
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -374,7 +375,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2777789870822032284}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0fd84ab0465142842a85ab4837106afc, type: 3}
   m_Name: 
@@ -385,7 +386,7 @@ MonoBehaviour:
   spawnbullet: {fileID: 6691232700006703995}
   cooldown: 0
   playerid: 0
---- !u!114 &2405777053565154320
+--- !u!114 &4149807968477294775
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -397,7 +398,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bca7acea9317b6348b820803f62d5bff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 10
+  health: 0
   id: 0
   attackingid: 0
 --- !u!114 &5926833675752689561
@@ -407,7 +408,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2777789870822032284}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5f16c8758f11f43468c0d00e04b15b03, type: 3}
   m_Name: 
