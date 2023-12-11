@@ -14,12 +14,7 @@ public class TankForce : MonoBehaviour
     public float friction;
     public float side;
     public GilboInput gilboInput;
-    void Start()
-    {
-        rb = GetComponent<Rigidbody>();
-        gilboInput = new GilboInput();
-        gilboInput.InCar.Enable();
-    }
+    
 
     // Update is called once per frame
     void FixedUpdate()

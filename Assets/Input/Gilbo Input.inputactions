@@ -2,45 +2,6 @@
     "name": "Gilbo Input",
     "maps": [
         {
-            "name": "On Foot",
-            "id": "13a501e3-06af-4c7d-b3f8-9a07f33f0d55",
-            "actions": [
-                {
-                    "name": "Fire",
-                    "type": "Button",
-                    "id": "1427cce2-8710-42d2-a40e-ae1f41f072a1",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "Hold",
-                    "initialStateCheck": false
-                }
-            ],
-            "bindings": [
-                {
-                    "name": "",
-                    "id": "f4213e15-caf5-4082-9d85-fff37c2ba865",
-                    "path": "<Keyboard>/space",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Fire",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "fc387f50-3ff1-4c7a-bdc3-bfa2ea2a78aa",
-                    "path": "<Mouse>/leftButton",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Fire",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                }
-            ]
-        },
-        {
             "name": "In Car",
             "id": "09ae7a8c-f7d7-4c81-a6d3-c91c6d39faa6",
             "actions": [
@@ -48,6 +9,24 @@
                     "name": "Move",
                     "type": "Value",
                     "id": "8399ed42-3dfa-4646-ab7f-3a54e0edd3ec",
+                    "expectedControlType": "Axis",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "Shoot",
+                    "type": "Button",
+                    "id": "534eebc6-446d-415e-b268-48657d789548",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Aim",
+                    "type": "Value",
+                    "id": "fffa1457-d986-41a7-ae7c-b2bb39bd31da",
                     "expectedControlType": "Vector2",
                     "processors": "",
                     "interactions": "",
@@ -56,62 +35,63 @@
             ],
             "bindings": [
                 {
-                    "name": "WASD",
-                    "id": "6c7260ca-c91a-4160-bf22-bb7eb8b74f76",
-                    "path": "2DVector",
+                    "name": "",
+                    "id": "b9eabfed-fe00-4148-8d52-84c402a6c6c7",
+                    "path": "<Gamepad>/rightTrigger",
                     "interactions": "",
                     "processors": "",
-                    "groups": "",
+                    "groups": "GamePad",
                     "action": "Move",
-                    "isComposite": true,
+                    "isComposite": false,
                     "isPartOfComposite": false
                 },
                 {
-                    "name": "Up",
-                    "id": "77475e7f-d092-4a91-96c0-c4a5398aed51",
-                    "path": "<Keyboard>/w",
+                    "name": "",
+                    "id": "16e21f02-3654-4d4c-9d7b-7e5eab5745d5",
+                    "path": "<Gamepad>/leftTrigger",
                     "interactions": "",
                     "processors": "",
-                    "groups": "",
+                    "groups": "GamePad",
                     "action": "Move",
                     "isComposite": false,
-                    "isPartOfComposite": true
+                    "isPartOfComposite": false
                 },
                 {
-                    "name": "Down",
-                    "id": "640fa091-6296-43c4-a106-c6c61bd13031",
-                    "path": "<Keyboard>/s",
+                    "name": "",
+                    "id": "78fad568-401f-4ad5-b561-19bf654aa30d",
+                    "path": "<Gamepad>/buttonSouth",
                     "interactions": "",
                     "processors": "",
-                    "groups": "",
-                    "action": "Move",
+                    "groups": "GamePad",
+                    "action": "Shoot",
                     "isComposite": false,
-                    "isPartOfComposite": true
+                    "isPartOfComposite": false
                 },
                 {
-                    "name": "Left",
-                    "id": "3f09448d-3eb7-49a8-a32b-9be0dde259ed",
-                    "path": "<Keyboard>/a",
+                    "name": "",
+                    "id": "743ace17-c43b-4123-9fb5-eba41e097793",
+                    "path": "<Gamepad>/leftStick",
                     "interactions": "",
                     "processors": "",
-                    "groups": "",
-                    "action": "Move",
+                    "groups": "GamePad",
+                    "action": "Aim",
                     "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "Right",
-                    "id": "824ba7e5-ad18-4758-bad6-5e4a5df0e0b9",
-                    "path": "<Keyboard>/d",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Move",
-                    "isComposite": false,
-                    "isPartOfComposite": true
+                    "isPartOfComposite": false
                 }
             ]
         }
     ],
-    "controlSchemes": []
+    "controlSchemes": [
+        {
+            "name": "GamePad",
+            "bindingGroup": "GamePad",
+            "devices": [
+                {
+                    "devicePath": "<Gamepad>",
+                    "isOptional": false,
+                    "isOR": false
+                }
+            ]
+        }
+    ]
 }

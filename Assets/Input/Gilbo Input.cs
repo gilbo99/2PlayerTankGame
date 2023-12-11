@@ -24,45 +24,6 @@ public partial class @GilboInput: IInputActionCollection2, IDisposable
     ""name"": ""Gilbo Input"",
     ""maps"": [
         {
-            ""name"": ""On Foot"",
-            ""id"": ""13a501e3-06af-4c7d-b3f8-9a07f33f0d55"",
-            ""actions"": [
-                {
-                    ""name"": ""Fire"",
-                    ""type"": ""Button"",
-                    ""id"": ""1427cce2-8710-42d2-a40e-ae1f41f072a1"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": ""Hold"",
-                    ""initialStateCheck"": false
-                }
-            ],
-            ""bindings"": [
-                {
-                    ""name"": """",
-                    ""id"": ""f4213e15-caf5-4082-9d85-fff37c2ba865"",
-                    ""path"": ""<Keyboard>/space"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Fire"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""fc387f50-3ff1-4c7a-bdc3-bfa2ea2a78aa"",
-                    ""path"": ""<Mouse>/leftButton"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Fire"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                }
-            ]
-        },
-        {
             ""name"": ""In Car"",
             ""id"": ""09ae7a8c-f7d7-4c81-a6d3-c91c6d39faa6"",
             ""actions"": [
@@ -70,6 +31,24 @@ public partial class @GilboInput: IInputActionCollection2, IDisposable
                     ""name"": ""Move"",
                     ""type"": ""Value"",
                     ""id"": ""8399ed42-3dfa-4646-ab7f-3a54e0edd3ec"",
+                    ""expectedControlType"": ""Axis"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Shoot"",
+                    ""type"": ""Button"",
+                    ""id"": ""534eebc6-446d-415e-b268-48657d789548"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Aim"",
+                    ""type"": ""Value"",
+                    ""id"": ""fffa1457-d986-41a7-ae7c-b2bb39bd31da"",
                     ""expectedControlType"": ""Vector2"",
                     ""processors"": """",
                     ""interactions"": """",
@@ -78,71 +57,71 @@ public partial class @GilboInput: IInputActionCollection2, IDisposable
             ],
             ""bindings"": [
                 {
-                    ""name"": ""WASD"",
-                    ""id"": ""6c7260ca-c91a-4160-bf22-bb7eb8b74f76"",
-                    ""path"": ""2DVector"",
+                    ""name"": """",
+                    ""id"": ""b9eabfed-fe00-4148-8d52-84c402a6c6c7"",
+                    ""path"": ""<Gamepad>/rightTrigger"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": """",
+                    ""groups"": ""GamePad"",
                     ""action"": ""Move"",
-                    ""isComposite"": true,
+                    ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
                 {
-                    ""name"": ""Up"",
-                    ""id"": ""77475e7f-d092-4a91-96c0-c4a5398aed51"",
-                    ""path"": ""<Keyboard>/w"",
+                    ""name"": """",
+                    ""id"": ""16e21f02-3654-4d4c-9d7b-7e5eab5745d5"",
+                    ""path"": ""<Gamepad>/leftTrigger"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": """",
+                    ""groups"": ""GamePad"",
                     ""action"": ""Move"",
                     ""isComposite"": false,
-                    ""isPartOfComposite"": true
+                    ""isPartOfComposite"": false
                 },
                 {
-                    ""name"": ""Down"",
-                    ""id"": ""640fa091-6296-43c4-a106-c6c61bd13031"",
-                    ""path"": ""<Keyboard>/s"",
+                    ""name"": """",
+                    ""id"": ""78fad568-401f-4ad5-b561-19bf654aa30d"",
+                    ""path"": ""<Gamepad>/buttonSouth"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Move"",
+                    ""groups"": ""GamePad"",
+                    ""action"": ""Shoot"",
                     ""isComposite"": false,
-                    ""isPartOfComposite"": true
+                    ""isPartOfComposite"": false
                 },
                 {
-                    ""name"": ""Left"",
-                    ""id"": ""3f09448d-3eb7-49a8-a32b-9be0dde259ed"",
-                    ""path"": ""<Keyboard>/a"",
+                    ""name"": """",
+                    ""id"": ""743ace17-c43b-4123-9fb5-eba41e097793"",
+                    ""path"": ""<Gamepad>/leftStick"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Move"",
+                    ""groups"": ""GamePad"",
+                    ""action"": ""Aim"",
                     ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""Right"",
-                    ""id"": ""824ba7e5-ad18-4758-bad6-5e4a5df0e0b9"",
-                    ""path"": ""<Keyboard>/d"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Move"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
+                    ""isPartOfComposite"": false
                 }
             ]
         }
     ],
-    ""controlSchemes"": []
+    ""controlSchemes"": [
+        {
+            ""name"": ""GamePad"",
+            ""bindingGroup"": ""GamePad"",
+            ""devices"": [
+                {
+                    ""devicePath"": ""<Gamepad>"",
+                    ""isOptional"": false,
+                    ""isOR"": false
+                }
+            ]
+        }
+    ]
 }");
-        // On Foot
-        m_OnFoot = asset.FindActionMap("On Foot", throwIfNotFound: true);
-        m_OnFoot_Fire = m_OnFoot.FindAction("Fire", throwIfNotFound: true);
         // In Car
         m_InCar = asset.FindActionMap("In Car", throwIfNotFound: true);
         m_InCar_Move = m_InCar.FindAction("Move", throwIfNotFound: true);
+        m_InCar_Shoot = m_InCar.FindAction("Shoot", throwIfNotFound: true);
+        m_InCar_Aim = m_InCar.FindAction("Aim", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -201,61 +180,19 @@ public partial class @GilboInput: IInputActionCollection2, IDisposable
         return asset.FindBinding(bindingMask, out action);
     }
 
-    // On Foot
-    private readonly InputActionMap m_OnFoot;
-    private List<IOnFootActions> m_OnFootActionsCallbackInterfaces = new List<IOnFootActions>();
-    private readonly InputAction m_OnFoot_Fire;
-    public struct OnFootActions
-    {
-        private @GilboInput m_Wrapper;
-        public OnFootActions(@GilboInput wrapper) { m_Wrapper = wrapper; }
-        public InputAction @Fire => m_Wrapper.m_OnFoot_Fire;
-        public InputActionMap Get() { return m_Wrapper.m_OnFoot; }
-        public void Enable() { Get().Enable(); }
-        public void Disable() { Get().Disable(); }
-        public bool enabled => Get().enabled;
-        public static implicit operator InputActionMap(OnFootActions set) { return set.Get(); }
-        public void AddCallbacks(IOnFootActions instance)
-        {
-            if (instance == null || m_Wrapper.m_OnFootActionsCallbackInterfaces.Contains(instance)) return;
-            m_Wrapper.m_OnFootActionsCallbackInterfaces.Add(instance);
-            @Fire.started += instance.OnFire;
-            @Fire.performed += instance.OnFire;
-            @Fire.canceled += instance.OnFire;
-        }
-
-        private void UnregisterCallbacks(IOnFootActions instance)
-        {
-            @Fire.started -= instance.OnFire;
-            @Fire.performed -= instance.OnFire;
-            @Fire.canceled -= instance.OnFire;
-        }
-
-        public void RemoveCallbacks(IOnFootActions instance)
-        {
-            if (m_Wrapper.m_OnFootActionsCallbackInterfaces.Remove(instance))
-                UnregisterCallbacks(instance);
-        }
-
-        public void SetCallbacks(IOnFootActions instance)
-        {
-            foreach (var item in m_Wrapper.m_OnFootActionsCallbackInterfaces)
-                UnregisterCallbacks(item);
-            m_Wrapper.m_OnFootActionsCallbackInterfaces.Clear();
-            AddCallbacks(instance);
-        }
-    }
-    public OnFootActions @OnFoot => new OnFootActions(this);
-
     // In Car
     private readonly InputActionMap m_InCar;
     private List<IInCarActions> m_InCarActionsCallbackInterfaces = new List<IInCarActions>();
     private readonly InputAction m_InCar_Move;
+    private readonly InputAction m_InCar_Shoot;
+    private readonly InputAction m_InCar_Aim;
     public struct InCarActions
     {
         private @GilboInput m_Wrapper;
         public InCarActions(@GilboInput wrapper) { m_Wrapper = wrapper; }
         public InputAction @Move => m_Wrapper.m_InCar_Move;
+        public InputAction @Shoot => m_Wrapper.m_InCar_Shoot;
+        public InputAction @Aim => m_Wrapper.m_InCar_Aim;
         public InputActionMap Get() { return m_Wrapper.m_InCar; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -268,6 +205,12 @@ public partial class @GilboInput: IInputActionCollection2, IDisposable
             @Move.started += instance.OnMove;
             @Move.performed += instance.OnMove;
             @Move.canceled += instance.OnMove;
+            @Shoot.started += instance.OnShoot;
+            @Shoot.performed += instance.OnShoot;
+            @Shoot.canceled += instance.OnShoot;
+            @Aim.started += instance.OnAim;
+            @Aim.performed += instance.OnAim;
+            @Aim.canceled += instance.OnAim;
         }
 
         private void UnregisterCallbacks(IInCarActions instance)
@@ -275,6 +218,12 @@ public partial class @GilboInput: IInputActionCollection2, IDisposable
             @Move.started -= instance.OnMove;
             @Move.performed -= instance.OnMove;
             @Move.canceled -= instance.OnMove;
+            @Shoot.started -= instance.OnShoot;
+            @Shoot.performed -= instance.OnShoot;
+            @Shoot.canceled -= instance.OnShoot;
+            @Aim.started -= instance.OnAim;
+            @Aim.performed -= instance.OnAim;
+            @Aim.canceled -= instance.OnAim;
         }
 
         public void RemoveCallbacks(IInCarActions instance)
@@ -292,12 +241,19 @@ public partial class @GilboInput: IInputActionCollection2, IDisposable
         }
     }
     public InCarActions @InCar => new InCarActions(this);
-    public interface IOnFootActions
+    private int m_GamePadSchemeIndex = -1;
+    public InputControlScheme GamePadScheme
     {
-        void OnFire(InputAction.CallbackContext context);
+        get
+        {
+            if (m_GamePadSchemeIndex == -1) m_GamePadSchemeIndex = asset.FindControlSchemeIndex("GamePad");
+            return asset.controlSchemes[m_GamePadSchemeIndex];
+        }
     }
     public interface IInCarActions
     {
         void OnMove(InputAction.CallbackContext context);
+        void OnShoot(InputAction.CallbackContext context);
+        void OnAim(InputAction.CallbackContext context);
     }
 }
