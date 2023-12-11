@@ -6,27 +6,16 @@ using UnityEngine;
 public class Crosshair : MonoBehaviour
 {
     public GameObject aim;
-
     public LayerMask mask;
-
-    public GameObject crossHair;
-
-    public GameObject test;
+    public GameObject crossHair_PreFab;
+    private GameObject crossHair;
 
 
     public void Update()
     {
         MakeCrossHair();
     }
-
-    public void OnDrawGizmos()
-    {
-        if (aim != null && test!= null)
-        {
-            Gizmos.color = Color.blue;
-            Gizmos.DrawLine(aim.transform.position, test.transform.position);
-        }
-    }
+    
 
     public void MakeCrossHair()
     {
@@ -34,15 +23,15 @@ public class Crosshair : MonoBehaviour
         //Physics.Raycast(aim.transform.forward, );
         if (Physics.Raycast(aim.transform.position, transform.TransformDirection(Vector3.forward), out hit, Mathf.Infinity, mask))
         {
-            if (test == null)
+            if (crossHair == null)
             { 
-                test = Instantiate(crossHair,hit.transform.position, new Quaternion());
+                crossHair = Instantiate(crossHair_PreFab,hit.transform.position, new Quaternion());
 
-                test.transform.parent = this.transform;
+                crossHair.transform.parent = this.transform;
             }
             else
             {
-                test.transform.position = hit.point;
+                crossHair.transform.position = hit.point;
 
             }
            

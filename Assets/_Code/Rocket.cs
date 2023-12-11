@@ -5,12 +5,12 @@ using Unity.VisualScripting;
 using UnityEngine;
 
 
-public class Rocket : MonoBehaviour
+public class Rocket : MonoBehaviour, IAbilitiesStats 
 {
     public GameObject model;
     private Rigidbody rb;
     private ArenaManager gm;
-
+    public Transform transform { get; set; }
     public new string name;
 
     
@@ -22,21 +22,23 @@ public class Rocket : MonoBehaviour
     public float lifespan;
     public float dis;
     public float timer;
-    
+    public Vector3 spawn;
     private float previous = 0;
     
     
     
     public Transform target;
     
+    
     public void Awake()
     {
         
         gm = FindObjectOfType<ArenaManager>();
-        rb = this.GetComponent<Rigidbody>();
+        rb = GetComponent<Rigidbody>();
         rb.velocity = transform.up * 25;
-        Destroy(this.gameObject, lifespan);
-        
+        Destroy(gameObject, lifespan);
+        transform.position = spawn;
+
     }
 
     
@@ -98,7 +100,7 @@ public class Rocket : MonoBehaviour
     {
         if (timer <= 0)
         {
-            Destroy(this.gameObject);
+            Destroy(gameObject);
             if (other.gameObject.GetComponent<TankStats>())
             {
                 target = null;
@@ -118,7 +120,8 @@ public class Rocket : MonoBehaviour
 
     public void KillMe()
     {
-        Destroy(this.gameObject);
+        Destroy(gameObject);
     }
-    
+
+   
 }

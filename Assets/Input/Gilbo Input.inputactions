@@ -9,7 +9,7 @@
                     "name": "Move",
                     "type": "Value",
                     "id": "8399ed42-3dfa-4646-ab7f-3a54e0edd3ec",
-                    "expectedControlType": "Axis",
+                    "expectedControlType": "Analog",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
@@ -27,34 +27,65 @@
                     "name": "Aim",
                     "type": "Value",
                     "id": "fffa1457-d986-41a7-ae7c-b2bb39bd31da",
-                    "expectedControlType": "Vector2",
+                    "expectedControlType": "Axis",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
+                },
+                {
+                    "name": "Abilities",
+                    "type": "Button",
+                    "id": "80baae31-a5e0-4ec8-ad47-9a642fc9691b",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
                 {
-                    "name": "",
-                    "id": "b9eabfed-fe00-4148-8d52-84c402a6c6c7",
-                    "path": "<Gamepad>/rightTrigger",
+                    "name": "Forward",
+                    "id": "3a795e96-08e9-4870-b218-f1f1105b89fa",
+                    "path": "1DAxis(minValue=0,whichSideWins=1)",
                     "interactions": "",
                     "processors": "",
-                    "groups": "GamePad",
+                    "groups": "",
                     "action": "Move",
-                    "isComposite": false,
+                    "isComposite": true,
                     "isPartOfComposite": false
                 },
                 {
-                    "name": "",
-                    "id": "16e21f02-3654-4d4c-9d7b-7e5eab5745d5",
+                    "name": "positive",
+                    "id": "451812d2-1087-424e-b636-2e8e047b1965",
+                    "path": "<Gamepad>/rightTrigger",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Move",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "Back",
+                    "id": "c42ff5ad-7da6-49a1-97c0-0c914f2254c1",
+                    "path": "1DAxis(maxValue=0,whichSideWins=2)",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Move",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "negative",
+                    "id": "d4d48fc7-3f9d-4b2a-804c-dd810171deeb",
                     "path": "<Gamepad>/leftTrigger",
                     "interactions": "",
                     "processors": "",
-                    "groups": "GamePad",
+                    "groups": "",
                     "action": "Move",
                     "isComposite": false,
-                    "isPartOfComposite": false
+                    "isPartOfComposite": true
                 },
                 {
                     "name": "",
@@ -68,13 +99,46 @@
                     "isPartOfComposite": false
                 },
                 {
-                    "name": "",
-                    "id": "743ace17-c43b-4123-9fb5-eba41e097793",
-                    "path": "<Gamepad>/leftStick",
+                    "name": "1D Axis",
+                    "id": "2f85f3b3-052b-4ef4-8a54-5f1e9714226b",
+                    "path": "1DAxis",
                     "interactions": "",
                     "processors": "",
-                    "groups": "GamePad",
+                    "groups": "",
                     "action": "Aim",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "negative",
+                    "id": "3db75884-7557-4499-9a84-301c59054a82",
+                    "path": "<Gamepad>/leftStick/left",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Aim",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "positive",
+                    "id": "9577e184-5fcb-4a50-806c-8aee0b78a52a",
+                    "path": "<Gamepad>/leftStick/right",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Aim",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "",
+                    "id": "8ca21ece-5fab-4651-96c2-754da896c1b1",
+                    "path": "<Gamepad>/buttonWest",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Abilities",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

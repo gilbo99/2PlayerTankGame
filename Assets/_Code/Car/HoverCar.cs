@@ -19,9 +19,6 @@ namespace Andrew
 
         [Range(0, 5000)] public float tireFriction;
 
-
-        public bool turningWheel;
-
         public Rigidbody rb;
 
         public RaycastHit hitinfo;
@@ -37,8 +34,7 @@ namespace Andrew
 
 
 
-            Physics.Raycast(rayPoint.transform.position, -transform.up, out hitinfo, tyreRadius, Int32.MaxValue,
-                QueryTriggerInteraction.Ignore);
+            Physics.Raycast(rayPoint.transform.position, -transform.up, out hitinfo, tyreRadius, Int32.MaxValue, QueryTriggerInteraction.Ignore);
             if (hitinfo.collider != null)
             {
                 Debug.DrawLine(transform.position, hitinfo.point, Color.green);
@@ -52,12 +48,6 @@ namespace Andrew
                 var localVelocity = transform.InverseTransformDirection(car.GetComponent<GoCar>().localVelocity);
                 rb.AddForceAtPosition(transform.forward * localVelocity.x, transform.position);
             }
-
-
-
-
-
-
         }
 
 
@@ -93,11 +83,7 @@ namespace Andrew
 
             rb.AddForceAtPosition(transform.up * (-localvel.y * damping), transform.position);
             //rb.AddForceAtPosition(this.transform.right * wheelSpeedx.x, transform.position);
-
-
         }
-
-
-
+        
     }
 }
