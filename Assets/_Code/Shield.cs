@@ -4,39 +4,37 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class Shield : MonoBehaviour
+public class Shield : MonoBehaviour, IAbilitiesStats
 {
     public int shieldHP;
-
-    private int playerid;
     
+    public Transform transform { get; set;}
+    public GameObject owner { get; set; }
+
     private UIManager ui;
 
     public GameObject shotID;
 
+    public Transform spawn;
+    
+    public delegate void ShieldDestroy();
+
+    public event ShieldDestroy shielDestroy;
+    
+
     public void Awake()
     {
+        transform = spawn;
+        
         ui = FindObjectOfType<UIManager>();
     }
 
     private void OnTriggerEnter(Collider other)
     {
         
-        shotID = other.gameObject;
-
-        if (shotID.CompareTag("Bullet") && playerid != IDCheck())
-        {
-            shieldHP -= shotID.GetComponent<Bullet>().damage;
-            shotID.GetComponent<Bullet>().Killme();
-        }
-        else if (shotID.CompareTag("Rocket") && playerid != IDCheck())
-        {
-            shieldHP -= shotID.GetComponent<Rocket>().damage;
-            shotID.GetComponent<Rocket>().KillMe();
-        }else if (shotID.CompareTag("Mine") && playerid != IDCheck())
-        {
-            shieldHP -= shotID.GetComponent<Mine>().damage;
-        }
+       
+     
+        
 
         if (shieldHP <= 0)
         {
@@ -48,12 +46,13 @@ public class Shield : MonoBehaviour
     }
 
 
-    public void SetID(int id)
+    public void SetOwner(GameObject tank)
     {
-        playerid = id;
-        
+        owner = tank;
     }
 
+    
+    /*
     public int IDCheck()
     {
         int id = 0;
@@ -70,8 +69,13 @@ public class Shield : MonoBehaviour
         return id;
     }
 
+*/
+    
     public void OnDestroy()
     {
-        ui.ShieldOn(playerid, false);
+        shielDestroy?.Invoke();
+        //ui.ShieldOn(owner , false);
     }
+
+    
 }

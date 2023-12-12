@@ -1,24 +1,29 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-
-
-public class AbilitiesBox : MonoBehaviour
+namespace Andrew
 {
-    public List<GameObject> item;
-    public GameObject give;
-    
-    public void Awake()
-    {
-        give = item[UnityEngine.Random.Range(0, item.Count)];
-    }
 
 
-    public void Killme()
+
+    public class AbilitiesBox : MonoBehaviour
     {
-        Destroy(gameObject);
+        public List<GameObject> item;
+        public GameObject give;
+
+        public void Awake()
+        {
+            give = item[Random.Range(0, item.Count)];
+        }
+
+
+        public void KillMe()
+        {
+            Destroy(gameObject);
+        }
+
+
     }
-    
-   
 }
+
 

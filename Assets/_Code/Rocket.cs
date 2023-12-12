@@ -11,8 +11,10 @@ public class Rocket : MonoBehaviour, IAbilitiesStats
     private Rigidbody rb;
     private ArenaManager gm;
     public Transform transform { get; set; }
-    public new string name;
+    public GameObject owner { get; set; }
+    public TankStats Playername;
 
+   
     
     public int playerID;
     
@@ -22,8 +24,9 @@ public class Rocket : MonoBehaviour, IAbilitiesStats
     public float lifespan;
     public float dis;
     public float timer;
-    public Vector3 spawn;
+    public Transform spawn;
     private float previous = 0;
+   
     
     
     
@@ -37,7 +40,7 @@ public class Rocket : MonoBehaviour, IAbilitiesStats
         rb = GetComponent<Rigidbody>();
         rb.velocity = transform.up * 25;
         Destroy(gameObject, lifespan);
-        transform.position = spawn;
+        transform = spawn;
 
     }
 
@@ -101,21 +104,21 @@ public class Rocket : MonoBehaviour, IAbilitiesStats
         if (timer <= 0)
         {
             Destroy(gameObject);
-            if (other.gameObject.GetComponent<TankStats>())
-            {
-                target = null;
-                KillMe();
-                other.gameObject.GetComponent<TankStats>().TakeDamage(damage, playerID, name);
+        }
+        
+        if (other.gameObject.GetComponent<TankStats>())
+        {
+            target = null;
+            KillMe();
+            other.gameObject.GetComponent<TankStats>().TakeDamage(damage, owner.GetComponent<TankStats>().playerName, name);
                 
                 
-            }
         }
     }
     
-    public void SetID(int id)
+    public void SetOwner(GameObject tank)
     {
-        playerID = id;
-        Debug.Log("Rocket ID set: " + playerID);
+        owner = tank;
     }
 
     public void KillMe()

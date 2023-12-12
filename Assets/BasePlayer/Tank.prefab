@@ -412,7 +412,7 @@ GameObject:
   - component: {fileID: 6046804652466831359}
   - component: {fileID: 7417922078585549947}
   - component: {fileID: 8610643138782197783}
-  - component: {fileID: 5185894961226470858}
+  - component: {fileID: 4864653607235100791}
   m_Layer: 0
   m_Name: Tank
   m_TagString: Untagged
@@ -589,7 +589,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 72
   crossHair_PreFab: {fileID: 0}
---- !u!114 &5185894961226470858
+--- !u!114 &4864653607235100791
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -598,7 +598,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 3511087693647494549}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b4f724a38b723a94cbf462c233a88d2c, type: 3}
+  m_Script: {fileID: 11500000, guid: cb58a7c4078108d498ea8afc3f99ba48, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   ability: []

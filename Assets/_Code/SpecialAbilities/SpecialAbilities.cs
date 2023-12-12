@@ -25,15 +25,18 @@ namespace Andrew
         }
 
 
-        public void OnCollisionEnter(Collision other)
+        
+
+        public void OnTriggerEnter(Collider other)
         {
-            if (!other.transform.GetComponent<AbilitiesBox>()){return;}
+            
+            if (ability.Count != 0) {return;}
+            if (!other.gameObject.GetComponent<AbilitiesBox>()){return;}
             var box = other.transform.GetComponent<AbilitiesBox>();
-
             var Abilitys = new Ability();
-            Abilitys.Setitem(box.give);
+            Abilitys.Setitem(box.give, box.transform, gameObject);
             ability.Add(Abilitys);
-
+            other.gameObject.GetComponent<AbilitiesBox>().KillMe();
 
 
         }
@@ -49,10 +52,11 @@ namespace Andrew
     [Serializable]
     public class Ability
     {
-        public void Setitem(GameObject receivedItem)
+        public void Setitem(GameObject receivedItem, Transform transform, GameObject tank)
         {
             item = receivedItem;
-            
+            spawn = transform;
+            item.GetComponent<IAbilitiesStats>().owner = tank;
         }
         
         public GameObject item;

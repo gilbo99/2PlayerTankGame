@@ -73,7 +73,7 @@ public class GameManager : MonoBehaviour
         if (firstSetup)
         {
             //uIManager.UpdateScore(active[0].GetComponent<TankStats>().id);
-            Score?.Invoke(active[0].GetComponent<TankStats>().id);
+            //Score?.Invoke(active[0].GetComponent<TankStats>().id);
         }
         Cursor.visible = false;
         ClearList();
@@ -93,7 +93,7 @@ public class GameManager : MonoBehaviour
             
             
             var clone = Instantiate(tank[i],spawnLocation[i].transform.position, transform.rotation);
-            clone.gameObject.GetComponent<TankStats>().id = i;
+            //clone.gameObject.GetComponent<TankStats>().id = i;
             uIManager.HealthSubTo(clone);
             //tankLocation.Add(clone.transform);
             active.Add(clone);

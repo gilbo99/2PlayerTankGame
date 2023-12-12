@@ -26,7 +26,7 @@ public class UIManager : MonoBehaviour
 
    public void Start()
    {
-       gameMode.Score += UpdateScore;
+      // gameMode.Score += UpdateScore;
        gameMode.uiSetup += LayoutUI;
        LayoutUI(2);
    }
@@ -47,7 +47,7 @@ public class UIManager : MonoBehaviour
 
    public void OnDisable()
    {
-       gameMode.Score -= UpdateScore;
+      /// gameMode.Score -= UpdateScore;
    }
 
    public void SetPlayerHP(int hp , int id)
@@ -67,25 +67,27 @@ public class UIManager : MonoBehaviour
        boost[id].SetActive(t);
    }
 
-    void UpdateScore(int id)
+    void UpdateScore(GameObject player)
    {
+       /*
            currentScore[id]++;
            var test = currentScore[id].ToString();
            score[id].text = test;
+           */
    }
 
 
    public void HealthSubTo(GameObject tank)
    {
 
-       tank.GetComponent<TankStats>().setHealth += SetPlayerHP;
+       //tank.GetComponent<TankStats>().setHealth += SetPlayerHP;
 
    }
    
    public void HealthUnSubTo(GameObject tank)
    {
 
-       tank.GetComponent<TankStats>().setHealth -= SetPlayerHP;
+       //tank.GetComponent<TankStats>().setHealth -= SetPlayerHP;
 
    }
    

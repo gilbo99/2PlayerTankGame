@@ -18,6 +18,7 @@ public class Bullet : MonoBehaviour, IPauseable
     public float lifespan;
     public float cooldown;
     public int playerid;
+    public GameObject owner;
 
     public bool pause = false;
     
@@ -32,6 +33,7 @@ public class Bullet : MonoBehaviour, IPauseable
         Destroy(this.gameObject, lifespan);
         gm = FindObjectOfType<GameManager>();
         
+
     }
 
     public void Start()
@@ -73,7 +75,7 @@ public class Bullet : MonoBehaviour, IPauseable
             //other.gameObject.GetComponent<TankStats>().Damaged(damage, playerid, name);
             if (other.gameObject.GetComponent<IDamage>() != null)
             {
-                other.gameObject.GetComponent<IDamage>().Damaged(damage, playerid, name);
+                other.gameObject.GetComponent<IDamage>().Damaged(damage, owner.GetComponent<TankStats>().playerName, name);
             }
 
             
@@ -90,10 +92,10 @@ public class Bullet : MonoBehaviour, IPauseable
         Destroy(this.gameObject);
     }
     
-    public void SetID(int id)
+    public void SetOwner(GameObject tank)
     {
-        playerid = id;
-       
+        owner = tank;
+
     }
 
     public void Toggle()

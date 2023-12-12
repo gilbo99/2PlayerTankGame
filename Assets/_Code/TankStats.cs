@@ -9,14 +9,13 @@ public class TankStats : MonoBehaviour, IDamage
     
     //private UIManager uIManager;
     private GameManager gm;
-    
 
     public int health;
-    public int id;
+    public string playerName;
 
-    public int attackingid;
+    public GameObject attackingid;
 
-    public delegate void UpdateHealth(int senthealth, int sendid);
+    public delegate void UpdateHealth(int senthealth, GameObject owner);
     public event UpdateHealth setHealth;
 
 
@@ -31,14 +30,14 @@ public class TankStats : MonoBehaviour, IDamage
         //uIManager = FindObjectOfType<UIManager>();
     }
 
-    public void TakeDamage(int damage, int enemyid, string Weapon)
+    public void TakeDamage(int damage, string enemyid, string Weapon)
     {
         health -= damage;
         //uIManager.SetPlayerHP(health, id);
-        setHealth?.Invoke(health, id);
+        setHealth?.Invoke(health, gameObject);
         if (health <= 0)
         {
-            Debug.Log("Player: " + (enemyid) + " Killed Player: " + (id) + " with " + Weapon);
+            Debug.Log("Player: " + (enemyid) + " Killed Player: " + (playerName) + " with " + Weapon);
             Destroy(this.gameObject);
         }
     }
@@ -53,10 +52,12 @@ public class TankStats : MonoBehaviour, IDamage
     }
 
 
-    public void Damaged(int damage, int enemyid, string Weapon)
+    public void Damaged(int damage, string enemyid, string Weapon)
     {
         TakeDamage(damage, enemyid, Weapon);
     }
+
+    
 }
 
 

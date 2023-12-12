@@ -13,7 +13,7 @@ public class ArenaManager : MonoBehaviour
     public List<GameObject> tank;
     public List<GameObject> active; 
     
-    public new List<string> name;
+    public List<string> playerName;
     
     public bool gamePause = false;
 
@@ -26,7 +26,7 @@ public class ArenaManager : MonoBehaviour
     
     public KeyCode pauseKey;
     
-    public delegate void UpdateScore(int id);
+    public delegate void UpdateScore(string id);
 
     public event UpdateScore Score;
     
@@ -63,13 +63,12 @@ public class ArenaManager : MonoBehaviour
 
     public void SpawnPlayers(int i,Transform spawn)
     {
-        
+        var num = i + 1;
         var clone = Instantiate(tank[i],spawn.position, spawn.rotation);
-        clone.gameObject.GetComponent<TankStats>().id = i;
+        clone.gameObject.GetComponent<TankStats>().playerName = ("Player: " + num);
         clone.GetComponent<TankStats>().sendDeadMessage += RemovePlayer;
         active.Add(clone);
-        var num = i + 1;
-        name.Add("Player: " + num.ToString());
+        playerName.Add("Player: " + num);
 
     }
 
@@ -82,7 +81,7 @@ public class ArenaManager : MonoBehaviour
         }
         
         active.Clear();
-        name.Clear();
+        playerName.Clear();
     }
 
 
@@ -100,7 +99,7 @@ public class ArenaManager : MonoBehaviour
 
         if (active.Count == 1)
         {
-            Score?.Invoke(active[0].GetComponent<TankStats>().id);
+            Score?.Invoke(active[0].GetComponent<TankStats>().playerName);
         }
     }
 
