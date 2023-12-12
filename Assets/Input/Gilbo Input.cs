@@ -62,6 +62,15 @@ public partial class @GilboInput: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Leave"",
+                    ""type"": ""Button"",
+                    ""id"": ""6e4e9dd8-4445-4d87-9362-94df289d08c0"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -82,7 +91,7 @@ public partial class @GilboInput: IInputActionCollection2, IDisposable
                     ""path"": ""<Gamepad>/rightTrigger"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": """",
+                    ""groups"": ""GamePad"",
                     ""action"": ""Move"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
@@ -163,6 +172,17 @@ public partial class @GilboInput: IInputActionCollection2, IDisposable
                     ""action"": ""Abilities"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""9f7605ed-6838-4e6c-b1b8-8389feb5f32d"",
+                    ""path"": ""<Gamepad>/select"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""GamePad"",
+                    ""action"": ""Leave"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -178,6 +198,11 @@ public partial class @GilboInput: IInputActionCollection2, IDisposable
                     ""isOR"": false
                 }
             ]
+        },
+        {
+            ""name"": ""Keyboard"",
+            ""bindingGroup"": ""Keyboard"",
+            ""devices"": []
         }
     ]
 }");
@@ -187,6 +212,7 @@ public partial class @GilboInput: IInputActionCollection2, IDisposable
         m_InCar_Shoot = m_InCar.FindAction("Shoot", throwIfNotFound: true);
         m_InCar_Aim = m_InCar.FindAction("Aim", throwIfNotFound: true);
         m_InCar_Abilities = m_InCar.FindAction("Abilities", throwIfNotFound: true);
+        m_InCar_Leave = m_InCar.FindAction("Leave", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -252,6 +278,7 @@ public partial class @GilboInput: IInputActionCollection2, IDisposable
     private readonly InputAction m_InCar_Shoot;
     private readonly InputAction m_InCar_Aim;
     private readonly InputAction m_InCar_Abilities;
+    private readonly InputAction m_InCar_Leave;
     public struct InCarActions
     {
         private @GilboInput m_Wrapper;
@@ -260,6 +287,7 @@ public partial class @GilboInput: IInputActionCollection2, IDisposable
         public InputAction @Shoot => m_Wrapper.m_InCar_Shoot;
         public InputAction @Aim => m_Wrapper.m_InCar_Aim;
         public InputAction @Abilities => m_Wrapper.m_InCar_Abilities;
+        public InputAction @Leave => m_Wrapper.m_InCar_Leave;
         public InputActionMap Get() { return m_Wrapper.m_InCar; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -281,6 +309,9 @@ public partial class @GilboInput: IInputActionCollection2, IDisposable
             @Abilities.started += instance.OnAbilities;
             @Abilities.performed += instance.OnAbilities;
             @Abilities.canceled += instance.OnAbilities;
+            @Leave.started += instance.OnLeave;
+            @Leave.performed += instance.OnLeave;
+            @Leave.canceled += instance.OnLeave;
         }
 
         private void UnregisterCallbacks(IInCarActions instance)
@@ -297,6 +328,9 @@ public partial class @GilboInput: IInputActionCollection2, IDisposable
             @Abilities.started -= instance.OnAbilities;
             @Abilities.performed -= instance.OnAbilities;
             @Abilities.canceled -= instance.OnAbilities;
+            @Leave.started -= instance.OnLeave;
+            @Leave.performed -= instance.OnLeave;
+            @Leave.canceled -= instance.OnLeave;
         }
 
         public void RemoveCallbacks(IInCarActions instance)
@@ -323,11 +357,21 @@ public partial class @GilboInput: IInputActionCollection2, IDisposable
             return asset.controlSchemes[m_GamePadSchemeIndex];
         }
     }
+    private int m_KeyboardSchemeIndex = -1;
+    public InputControlScheme KeyboardScheme
+    {
+        get
+        {
+            if (m_KeyboardSchemeIndex == -1) m_KeyboardSchemeIndex = asset.FindControlSchemeIndex("Keyboard");
+            return asset.controlSchemes[m_KeyboardSchemeIndex];
+        }
+    }
     public interface IInCarActions
     {
         void OnMove(InputAction.CallbackContext context);
         void OnShoot(InputAction.CallbackContext context);
         void OnAim(InputAction.CallbackContext context);
         void OnAbilities(InputAction.CallbackContext context);
+        void OnLeave(InputAction.CallbackContext context);
     }
 }

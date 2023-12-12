@@ -1,4 +1,6 @@
+using System;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 namespace Andrew
 {
@@ -8,9 +10,11 @@ namespace Andrew
 
         public GilboInput gilboInput;
         private GameObject tank;
+        public PlayerInput player;
 
         public void Start()
         {
+            player = GetComponent<PlayerInput>();
             tank = gameObject;
             gilboInput = new GilboInput();
 
@@ -20,7 +24,21 @@ namespace Andrew
             gilboInput.InCar.Move.performed += aContext => tank.GetComponent<IDriveable>().Break(aContext);
             gilboInput.InCar.Shoot.performed += aContext => tank.GetComponent<TankShoot>().Shoot();
             gilboInput.InCar.Abilities.performed += aContext => tank.GetComponent<SpecialAbilities>().UseAbility();
+            gilboInput.InCar.Leave.performed += aContext => PlayerLeft();
 
         }
+        
+        
+        public void PlayerLeft()
+        {
+            Destroy(player);
+            Destroy(tank);
+            gilboInput.Dispose();
+           
+        }
+
+       
+        
     }
 }
+ 

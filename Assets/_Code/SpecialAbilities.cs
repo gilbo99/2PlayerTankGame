@@ -46,7 +46,7 @@ public class SpecialAbilities : MonoBehaviour
 
     private void SetWeapon(GameObject clone)
     {
-        
+        /*
         if (clone.TryGetComponent<Rocket>(out Rocket rocket))
         {
             //rocket.SetID(shooterid);
@@ -58,6 +58,7 @@ public class SpecialAbilities : MonoBehaviour
             shield.transform.parent = transform;
             //ui.ShieldOn(shooterid, true);
         }
+        */
         
     }
     

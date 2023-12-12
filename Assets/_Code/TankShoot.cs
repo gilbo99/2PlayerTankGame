@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class TankShoot : MonoBehaviour
 {
@@ -16,6 +17,7 @@ public class TankShoot : MonoBehaviour
         if (cooldown < 0 && shooting)
         {
             var clone = Instantiate(bullet, spawnbullet.position, spawnbullet.rotation);
+            clone.GetComponent<Bullet>().owner = gameObject;
             cooldown = clone.GetComponent<Bullet>().cooldown;
             var Push = new Vector3(0,0,-ShootingForce);
             GetComponent<Rigidbody>().AddForce(Push);
