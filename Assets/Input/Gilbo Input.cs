@@ -28,7 +28,7 @@ public partial class @GilboInput: IInputActionCollection2, IDisposable
             ""id"": ""09ae7a8c-f7d7-4c81-a6d3-c91c6d39faa6"",
             ""actions"": [
                 {
-                    ""name"": ""Move"",
+                    ""name"": ""Forward"",
                     ""type"": ""Value"",
                     ""id"": ""8399ed42-3dfa-4646-ab7f-3a54e0edd3ec"",
                     ""expectedControlType"": ""Analog"",
@@ -71,6 +71,15 @@ public partial class @GilboInput: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Backward"",
+                    ""type"": ""Value"",
+                    ""id"": ""75dea8f1-b76e-4b2b-b3b4-df7ded0d8712"",
+                    ""expectedControlType"": ""Analog"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
                 }
             ],
             ""bindings"": [
@@ -81,7 +90,7 @@ public partial class @GilboInput: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Move"",
+                    ""action"": ""Forward"",
                     ""isComposite"": true,
                     ""isPartOfComposite"": false
                 },
@@ -92,29 +101,7 @@ public partial class @GilboInput: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""GamePad"",
-                    ""action"": ""Move"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""Back"",
-                    ""id"": ""c42ff5ad-7da6-49a1-97c0-0c914f2254c1"",
-                    ""path"": ""1DAxis(maxValue=0,whichSideWins=2)"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Move"",
-                    ""isComposite"": true,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": ""negative"",
-                    ""id"": ""d4d48fc7-3f9d-4b2a-804c-dd810171deeb"",
-                    ""path"": ""<Gamepad>/leftTrigger"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Move"",
+                    ""action"": ""Forward"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
                 },
@@ -183,6 +170,28 @@ public partial class @GilboInput: IInputActionCollection2, IDisposable
                     ""action"": ""Leave"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""Backward"",
+                    ""id"": ""561e9746-1e9f-4c90-a847-80b36ae82ea2"",
+                    ""path"": ""1DAxis(maxValue=0,whichSideWins=2)"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Backward"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""negative"",
+                    ""id"": ""3ea195f5-823f-4242-ab2c-b6c84d49d66d"",
+                    ""path"": ""<Gamepad>/leftTrigger"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""GamePad"",
+                    ""action"": ""Backward"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
                 }
             ]
         }
@@ -208,11 +217,12 @@ public partial class @GilboInput: IInputActionCollection2, IDisposable
 }");
         // In Car
         m_InCar = asset.FindActionMap("In Car", throwIfNotFound: true);
-        m_InCar_Move = m_InCar.FindAction("Move", throwIfNotFound: true);
+        m_InCar_Forward = m_InCar.FindAction("Forward", throwIfNotFound: true);
         m_InCar_Shoot = m_InCar.FindAction("Shoot", throwIfNotFound: true);
         m_InCar_Aim = m_InCar.FindAction("Aim", throwIfNotFound: true);
         m_InCar_Abilities = m_InCar.FindAction("Abilities", throwIfNotFound: true);
         m_InCar_Leave = m_InCar.FindAction("Leave", throwIfNotFound: true);
+        m_InCar_Backward = m_InCar.FindAction("Backward", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -274,20 +284,22 @@ public partial class @GilboInput: IInputActionCollection2, IDisposable
     // In Car
     private readonly InputActionMap m_InCar;
     private List<IInCarActions> m_InCarActionsCallbackInterfaces = new List<IInCarActions>();
-    private readonly InputAction m_InCar_Move;
+    private readonly InputAction m_InCar_Forward;
     private readonly InputAction m_InCar_Shoot;
     private readonly InputAction m_InCar_Aim;
     private readonly InputAction m_InCar_Abilities;
     private readonly InputAction m_InCar_Leave;
+    private readonly InputAction m_InCar_Backward;
     public struct InCarActions
     {
         private @GilboInput m_Wrapper;
         public InCarActions(@GilboInput wrapper) { m_Wrapper = wrapper; }
-        public InputAction @Move => m_Wrapper.m_InCar_Move;
+        public InputAction @Forward => m_Wrapper.m_InCar_Forward;
         public InputAction @Shoot => m_Wrapper.m_InCar_Shoot;
         public InputAction @Aim => m_Wrapper.m_InCar_Aim;
         public InputAction @Abilities => m_Wrapper.m_InCar_Abilities;
         public InputAction @Leave => m_Wrapper.m_InCar_Leave;
+        public InputAction @Backward => m_Wrapper.m_InCar_Backward;
         public InputActionMap Get() { return m_Wrapper.m_InCar; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -297,9 +309,9 @@ public partial class @GilboInput: IInputActionCollection2, IDisposable
         {
             if (instance == null || m_Wrapper.m_InCarActionsCallbackInterfaces.Contains(instance)) return;
             m_Wrapper.m_InCarActionsCallbackInterfaces.Add(instance);
-            @Move.started += instance.OnMove;
-            @Move.performed += instance.OnMove;
-            @Move.canceled += instance.OnMove;
+            @Forward.started += instance.OnForward;
+            @Forward.performed += instance.OnForward;
+            @Forward.canceled += instance.OnForward;
             @Shoot.started += instance.OnShoot;
             @Shoot.performed += instance.OnShoot;
             @Shoot.canceled += instance.OnShoot;
@@ -312,13 +324,16 @@ public partial class @GilboInput: IInputActionCollection2, IDisposable
             @Leave.started += instance.OnLeave;
             @Leave.performed += instance.OnLeave;
             @Leave.canceled += instance.OnLeave;
+            @Backward.started += instance.OnBackward;
+            @Backward.performed += instance.OnBackward;
+            @Backward.canceled += instance.OnBackward;
         }
 
         private void UnregisterCallbacks(IInCarActions instance)
         {
-            @Move.started -= instance.OnMove;
-            @Move.performed -= instance.OnMove;
-            @Move.canceled -= instance.OnMove;
+            @Forward.started -= instance.OnForward;
+            @Forward.performed -= instance.OnForward;
+            @Forward.canceled -= instance.OnForward;
             @Shoot.started -= instance.OnShoot;
             @Shoot.performed -= instance.OnShoot;
             @Shoot.canceled -= instance.OnShoot;
@@ -331,6 +346,9 @@ public partial class @GilboInput: IInputActionCollection2, IDisposable
             @Leave.started -= instance.OnLeave;
             @Leave.performed -= instance.OnLeave;
             @Leave.canceled -= instance.OnLeave;
+            @Backward.started -= instance.OnBackward;
+            @Backward.performed -= instance.OnBackward;
+            @Backward.canceled -= instance.OnBackward;
         }
 
         public void RemoveCallbacks(IInCarActions instance)
@@ -368,10 +386,11 @@ public partial class @GilboInput: IInputActionCollection2, IDisposable
     }
     public interface IInCarActions
     {
-        void OnMove(InputAction.CallbackContext context);
+        void OnForward(InputAction.CallbackContext context);
         void OnShoot(InputAction.CallbackContext context);
         void OnAim(InputAction.CallbackContext context);
         void OnAbilities(InputAction.CallbackContext context);
         void OnLeave(InputAction.CallbackContext context);
+        void OnBackward(InputAction.CallbackContext context);
     }
 }

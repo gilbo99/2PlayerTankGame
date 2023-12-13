@@ -9,23 +9,25 @@ namespace Andrew
     {
 
         public GilboInput gilboInput;
-        private GameObject tank;
+        public GoCar tank;
+        public TankShoot tankShoot;
+        public SpecialAbilities abilities;
+        
         public PlayerInput player;
-
+ 
         public void Start()
         {
-            player = GetComponent<PlayerInput>();
-            tank = gameObject;
-            gilboInput = new GilboInput();
+            //gilboInput = new GilboInput();
 
-            gilboInput.InCar.Enable();
-            gilboInput.InCar.Aim.performed += aContext => tank.GetComponent<IDriveable>().Steer(aContext);
-            gilboInput.InCar.Move.performed += aContext => tank.GetComponent<IDriveable>().Forward(aContext);
-            gilboInput.InCar.Move.performed += aContext => tank.GetComponent<IDriveable>().Break(aContext);
-            gilboInput.InCar.Shoot.performed += aContext => tank.GetComponent<TankShoot>().Shoot();
-            gilboInput.InCar.Abilities.performed += aContext => tank.GetComponent<SpecialAbilities>().UseAbility();
+            //gilboInput.InCar.Enable();
+            player.actions.FindAction("Aim").performed += aContext => tank.GetComponent<IDriveable>().Steer(aContext);
+            player.actions.FindAction("Forward").performed += aContext => tank.GetComponent<IDriveable>().Forward(aContext);
+            player.actions.FindAction("Backward").performed += aContext => tank.GetComponent<IDriveable>().Break(aContext);
+            player.actions.FindAction("Shoot").performed += aContext => tankShoot.GetComponent<TankShoot>().Shoot();
+            player.actions.FindAction("Abilities").performed += aContext => abilities.GetComponent<SpecialAbilities>().UseAbility();
             gilboInput.InCar.Leave.performed += aContext => PlayerLeft();
-
+           
+            
         }
         
         

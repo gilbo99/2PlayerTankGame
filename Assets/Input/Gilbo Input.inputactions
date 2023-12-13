@@ -6,7 +6,7 @@
             "id": "09ae7a8c-f7d7-4c81-a6d3-c91c6d39faa6",
             "actions": [
                 {
-                    "name": "Move",
+                    "name": "Forward",
                     "type": "Value",
                     "id": "8399ed42-3dfa-4646-ab7f-3a54e0edd3ec",
                     "expectedControlType": "Analog",
@@ -49,6 +49,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "Backward",
+                    "type": "Value",
+                    "id": "75dea8f1-b76e-4b2b-b3b4-df7ded0d8712",
+                    "expectedControlType": "Analog",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
                 }
             ],
             "bindings": [
@@ -59,7 +68,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Move",
+                    "action": "Forward",
                     "isComposite": true,
                     "isPartOfComposite": false
                 },
@@ -70,29 +79,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "GamePad",
-                    "action": "Move",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "Back",
-                    "id": "c42ff5ad-7da6-49a1-97c0-0c914f2254c1",
-                    "path": "1DAxis(maxValue=0,whichSideWins=2)",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Move",
-                    "isComposite": true,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "negative",
-                    "id": "d4d48fc7-3f9d-4b2a-804c-dd810171deeb",
-                    "path": "<Gamepad>/leftTrigger",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Move",
+                    "action": "Forward",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
@@ -161,6 +148,28 @@
                     "action": "Leave",
                     "isComposite": false,
                     "isPartOfComposite": false
+                },
+                {
+                    "name": "Backward",
+                    "id": "561e9746-1e9f-4c90-a847-80b36ae82ea2",
+                    "path": "1DAxis(maxValue=0,whichSideWins=2)",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Backward",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "negative",
+                    "id": "3ea195f5-823f-4242-ab2c-b6c84d49d66d",
+                    "path": "<Gamepad>/leftTrigger",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "GamePad",
+                    "action": "Backward",
+                    "isComposite": false,
+                    "isPartOfComposite": true
                 }
             ]
         }

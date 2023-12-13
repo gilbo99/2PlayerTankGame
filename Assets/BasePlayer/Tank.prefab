@@ -588,7 +588,7 @@ MonoBehaviour:
       m_Calls: []
   m_ActionEvents: []
   m_NeverAutoSwitchControlSchemes: 0
-  m_DefaultControlScheme: GamePad
+  m_DefaultControlScheme: 
   m_DefaultActionMap: In Car
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 5763524697379496653}
@@ -652,7 +652,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a73be3e0513f1254eada34d4b7040407, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 0}
+  tank: {fileID: 7003157437429804517}
+  tankShoot: {fileID: 7417922078585549947}
+  abilities: {fileID: 4864653607235100791}
+  player: {fileID: 926687301159513600}
 --- !u!114 &7417922078585549947
 MonoBehaviour:
   m_ObjectHideFlags: 0
